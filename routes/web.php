@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/movies', [MoviesController::class, 'index'])->name('movies');
 Route::get('/movies/{slug}', [MoviesController::class, 'show'])->name('movies.show');
 Route::get('watch/{slug}', [MoviesController::class, 'watch'])->name('movies.watch');
 Route::get('/search', [MoviesController::class, 'search'])->name('movies.search');
+
+Route::get('categories', [CategoriesController::class, 'category'])->name('movies.category');
 
 
 

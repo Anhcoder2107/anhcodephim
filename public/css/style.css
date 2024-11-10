@@ -342,7 +342,9 @@ ol {
 	text-align: center;
 }
 
-.header__menu ul li {
+.header__menu ul li,
+.header__right ul li ,
+.li-child {
 	list-style: none;
 	display: inline-block;
 	position: relative;
@@ -358,49 +360,74 @@ ol {
 	color: #ffffff;
 }
 
-.header__menu ul li:hover .dropdown {
+.header__menu ul li:hover .dropdown,
+.header__right ul li:hover .dropdown {
 	top: 62px;
 	opacity: 1;
 	visibility: visible;
+
 }
 
-.header__menu ul li:hover .dropdown li a {
+
+
+.header__menu ul li:hover .dropdown li a,
+.header__right ul li:hover .dropdown li a {
 	background: transparent;
+    display: inline-block;
+    line-height: 1.5;
+
 }
 
-.header__menu ul li:last-child {
+.header__menu ul li:last-child,
+.header__right ul li:last-child {
 	margin-right: 0;
 }
 
-.header__menu ul li .dropdown {
-	position: absolute;
-	left: 0;
-	top: 82px;
-	width: 150px;
-	background: #ffffff;
-	text-align: left;
-	padding: 5px 0;
-	z-index: 9;
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: all, 0.3s;
-	-o-transition: all, 0.3s;
-	transition: all, 0.3s;
+.header__menu ul li .dropdown,
+.header__right ul li .dropdown {
+    position: absolute;
+    left: -323px;
+    top: 82px;
+    /* width: 100%; */
+    background: #ffffff;
+    text-align: left;
+    padding: 5px 0;
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
 }
 
-.header__menu ul li .dropdown li {
-	display: block;
+.header__right ul li .dropdown{
+    display: inline-block;
+    left: 0px;
+}
+
+.header__menu ul li .dropdown li,
+.header__right ul li .dropdown li {
+	display: inline-block;
 	margin-right: 0;
+    display: inline-block;
+    width: 150px;
 }
 
-.header__menu ul li .dropdown li a {
+.header__menu ul li .dropdown li a,
+.header__right ul li .dropdown li a {
 	font-size: 14px;
 	color: #111111;
 	font-weight: 500;
 	padding: 5px 20px;
+    display: inline-block;
+    width: 100%;
 }
 
-.header__menu ul li a {
+.header__menu ul li a,
+.header__right ul li a {
 	font-size: 15px;
 	color: #b7b7b7;
 	display: block;
@@ -411,7 +438,8 @@ ol {
 	padding: 20px;
 }
 
-.header__menu ul li a span {
+.header__menu ul li a span,
+.header__right ul li a span {
 	position: relative;
 	font-size: 17px;
 	top: 2px;
@@ -431,6 +459,14 @@ ol {
 
 .header__right a:last-child {
 	margin-right: 0;
+}
+
+.header__right ul li a{
+    padding: 0;
+}
+
+.header__right ul li .dropdown{
+    top: 56px;
 }
 
 .slicknav_menu {

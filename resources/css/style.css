@@ -364,6 +364,12 @@ ol {
 	visibility: visible;
 }
 
+.header__right ul li:hover .dropdown {
+    top: 62px;
+    opacity: 1;
+    visibility: visible;
+}
+
 .header__menu ul li:hover .dropdown li a {
 	background: transparent;
 }
@@ -386,6 +392,22 @@ ol {
 	-webkit-transition: all, 0.3s;
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
+}
+
+.header__right ul li .dropdown {
+    position: absolute;
+    left: 0;
+    top: 82px;
+    width: 150px;
+    background: #ffffff;
+    text-align: left;
+    padding: 5px 0;
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
 }
 
 .header__menu ul li .dropdown li {
