@@ -50,20 +50,11 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="{{ route('home') }}">Homepage</a></li>
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
+                                <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="./categories.html">Categories</a></li>
-                                        <li><a href="./anime-details.html">Anime Details</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                        @foreach ($categories as $category)
+                                            <li><a href="{{ route('movies.category.show', $category->slug) }}">{{ $category->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li><a href="#">Contacts</a></li>

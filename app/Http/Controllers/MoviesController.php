@@ -9,9 +9,6 @@ class MoviesController extends Controller
 {
     //
 
-    public function index(){
-        return view('movies.index');
-    }
 
     public function show($slug){
         $movie = Movies::where('slug', $slug)->first();

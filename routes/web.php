@@ -32,6 +32,7 @@ Route::get('watch/{slug}', [MoviesController::class, 'watch'])->name('movies.wat
 Route::get('/search', [MoviesController::class, 'search'])->name('movies.search');
 
 Route::get('categories', [CategoriesController::class, 'category'])->name('movies.category');
+Route::get('categories/{slug}', [CategoriesController::class, 'show'])->name('movies.category.show');
 
 
 
