@@ -10,7 +10,7 @@
     <title>
         @yield('title')
     </title>
-    <link rel="icon" href="img/favicon.webp" type="image/ico" />
+    <link rel="icon" href="{{ asset('img/favicon.webp') }}" type="image/ico" />
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
@@ -41,7 +41,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="{{ route('home') }}">
-                            <img src="img/logo.png" alt="">
+                            <img src="{{ asset('img/logo.png')}}" alt="">
                         </a>
                     </div>
                 </div>
@@ -49,15 +49,15 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="{{ route('home') }}">Homepage</a></li>
-                                <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
+                                <li class="active"><a href="{{ route('home') }}">Trang chủ</a></li>
+                                <li><a href="#">Thể loại <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         @foreach ($categories as $category)
                                             <li><a href="{{ route('movies.category.show', $category->slug) }}">{{ $category->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li><a href="#">Contacts</a></li>
+                                <li><a href="#">Liên hệ</a></li>
                             </ul>
                         </nav>
                     </div>

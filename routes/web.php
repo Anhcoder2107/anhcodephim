@@ -29,10 +29,13 @@ Route::post('/register', [AuthController::class, 'store'])->name('register');
 Route::get('/movies', [MoviesController::class, 'index'])->name('movies');
 Route::get('/movies/{slug}', [MoviesController::class, 'show'])->name('movies.show');
 Route::get('watch/{slug}', [MoviesController::class, 'watch'])->name('movies.watch');
+Route::get('watch/{slug}/{episode}', [MoviesController::class, 'watch'])->name('movies.watch.espiode');
 Route::get('/search', [MoviesController::class, 'search'])->name('movies.search');
 
 Route::get('categories', [CategoriesController::class, 'category'])->name('movies.category');
 Route::get('categories/{slug}', [CategoriesController::class, 'show'])->name('movies.category.show');
+Route::get('categories/{slug}/{page}', [CategoriesController::class, 'show'])->name('movies.category.show.page');
+
 
 
 

@@ -1,5 +1,7 @@
 @extends('layout.master')
-@section('title', 'Anime Details')
+@section('title')
+Thông Tin Phim | {{$movie->name}}
+@endsection
 @section('container')
     <!-- Breadcrumb Begin -->
 
@@ -8,9 +10,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./categories.html">Categories</a>
-                        <span>Romance</span>
+                        <a href="{{ route('home') }}"><i class="fa fa-home"></i> Trang chủ</a>
+                        <a href="{{ route('movies.category') }}">Thể loại</a>
+                        <span>{{ $movie->name }}</span>
                     </div>
                 </div>
             </div>
@@ -24,7 +26,7 @@
             <div class="anime__details__content">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="anime__details__pic set-bg" data-setbg="img/anime/details-pic.jpg">
+                        <div class="anime__details__pic set-bg" data-setbg="{{ $movie->thumb_url }}">
                             <div class="comment"><i class="fa fa-comments"></i> 11</div>
                             <div class="view"><i class="fa fa-eye"></i> 9141</div>
                         </div>
@@ -32,8 +34,8 @@
                     <div class="col-lg-9">
                         <div class="anime__details__text">
                             <div class="anime__details__title">
-                                <h3>Fate Stay Night: Unlimited Blade</h3>
-                                <span>フェイト／ステイナイト, Feito／su te i naito</span>
+                                <h3>{{ $movie->name }}</h3>
+                                <span>{{ $movie->origin_name }}</span>
                             </div>
                             <div class="anime__details__rating">
                                 <div class="rating">
@@ -45,32 +47,35 @@
                                 </div>
                                 <span>1.029 Votes</span>
                             </div>
-                            <p>{{ $movie}}<p>
+                            <p><p>
                             <div class="anime__details__widget">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>Type:</span> TV Series</li>
+                                            <li><span>Type:</span> {{ $movie->type }}</li>
                                             <li><span>Studios:</span> Lerche</li>
-                                            <li><span>Date aired:</span> Oct 02, 2019 to ?</li>
-                                            <li><span>Status:</span> Airing</li>
-                                            <li><span>Genre:</span> Action, Adventure, Fantasy, Magic</li>
+                                            <li><span>Date aired:</span> {{ $movie->publish_year }}</li>
+                                            <li><span>Status:</span> {{ $movie->status }}</li>
+                                            <li><span>Genre:</span>
+                                                @foreach ($movie_categories as $genre)
+                                                    {{ $genre->name }}
+                                                @endforeach
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
                                             <li><span>Scores:</span> 7.31 / 1,515</li>
                                             <li><span>Rating:</span> 8.5 / 161 times</li>
-                                            <li><span>Duration:</span> 24 min/ep</li>
-                                            <li><span>Quality:</span> HD</li>
-                                            <li><span>Views:</span> 131,541</li>
+                                            <li><span>Duration:</span> {{ $movie->episode_time }}</li>
+                                            <li><span>Quality:</span> {{ $movie->quality }}</li>
+                                            <li><span>Views:</span> {{ $movie->view_total }}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                                <a href="#" class="watch-btn"><span>Watch Now</span> <i
+                                <a href="{{ route('movies.watch', $movie->slug) }}" class="watch-btn"><span>Watch Now</span> <i
                                     class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>

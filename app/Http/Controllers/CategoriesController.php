@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use App\Models\Movies;
+use App\Models\CategoryMovie;
 
 class CategoriesController extends Controller
 {
@@ -15,6 +17,10 @@ class CategoriesController extends Controller
 
     public function show($slug){
         $category = Categories::where('slug', $slug)->first();
-        return view('categories', compact('category'));
+        $movies = CategoryMovie::where('category_id', $category->id)->get();
+        $movies = $movies->map(function($movie){
+            return Movies::where('id', $movie->movie_id)->first();
+        });
+        return view('categories', compact('category', 'movies'));
     }
 }
