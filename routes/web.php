@@ -9,6 +9,8 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\admin\HomeController as AdminHomeController;
 use App\Http\Controllers\admin\auth\AuthController as AdminAuthController;
 
+use App\Http\Controllers\admin\AdminMoviesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +45,17 @@ Route::get('categories/{slug}/{page}', [CategoriesController::class, 'show'])->n
 Route::prefix('admin')->name('admin.')->group(function(){
     //auth admin
     Route::get('/login', [AdminAuthController::class, 'login'])->name('login');
-
-
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+
+
+
+    //movies admin
+    Route::get('/movies', [AdminMoviesController::class, 'index'])->name('movies');
+    Route::get('/movies/create', [AdminMoviesController::class, 'create'])->name('movies.create');
+    Route::post('/movies/store', [AdminMoviesController::class, 'store'])->name('movies.store');
+    Route::get('/movies/edit/{id}', [AdminMoviesController::class, 'edit'])->name('movies.edit');
+    Route::post('/movies/update/{id}', [AdminMoviesController::class, 'update'])->name('movies.update');
+    Route::get('/movies/delete/{id}', [AdminMoviesController::class, 'delete'])->name('movies.delete');
 });
 
 
