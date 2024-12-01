@@ -6,6 +6,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\CategoriesController;
 
+use App\Http\Controllers\admin\HomeController as AdminHomeController;
+use App\Http\Controllers\admin\auth\AuthController as AdminAuthController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,7 +40,13 @@ Route::get('categories', [CategoriesController::class, 'category'])->name('movie
 Route::get('categories/{slug}', [CategoriesController::class, 'show'])->name('movies.category.show');
 Route::get('categories/{slug}/{page}', [CategoriesController::class, 'show'])->name('movies.category.show.page');
 
+Route::prefix('admin')->name('admin.')->group(function(){
+    //auth admin
+    Route::get('/login', [AdminAuthController::class, 'login'])->name('login');
 
+
+    Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+});
 
 
 

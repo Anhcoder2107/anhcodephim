@@ -36,6 +36,8 @@ class HomeController extends Controller
         $trendMovies = $movies->random(12);
 
 
+
+
         return view('index', compact('movies', 'seriesMovies', 'singleMovies', 'trendMovies'));
     }
 }
