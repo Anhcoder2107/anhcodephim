@@ -17,4 +17,8 @@ class Episodes extends Model
         'type',
         'link',
     ];
+
+    public function movie(){
+        return $this->belongsTo(Movies::class);
+    }
 }

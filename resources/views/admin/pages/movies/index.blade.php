@@ -19,6 +19,7 @@
                             <th>Movie Thumb_url</th>
                             <th>Movie Poster_url</th>
                             <th>Movie Type</th>
+                            <th>Movie Status</th>
                             <th>Movie Rating</th>
                             <th>Movie Espisoder_time</th>
                             <th>Movie Espisoder_current</th>
@@ -30,7 +31,8 @@
                             <th>Movie View Month</th>
                             <th>Movie Rating Count</th>
                             <th>Movie Rating Star</th>
-                            <th>Actions</th>
+                            <th>Movie Create Episodes</th>
+                            <th colspan="2">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,10 +42,17 @@
                                 <td>{{ $movie->name }}</td>
                                 <td>{{ $movie->origin_name }}</td>
                                 <td>{{ $movie->slug }}</td>
-                                <td>{{ Str::substr($movie->content, 0, 100) }}...</td>
+                                <td>
+                                    @if(Str::length($movie->content) > 100)
+                                        {{ Str::limit($movie->content, 100) }}
+                                    @else
+                                        {{ $movie->content }}
+                                    @endif
+                                </td>
                                 <td>{{ $movie->thumb_url }}</td>
                                 <td>{{ $movie->poster_url }}</td>
                                 <td>{{ $movie->type }}</td>
+                                <td>{{ $movie->status }}</td>
                                 <td>{{ $movie->rating }}</td>
                                 <td>{{ $movie->espisoder_time }}</td>
                                 <td>{{ $movie->espisoder_current }}</td>
@@ -56,10 +65,14 @@
                                 <td>{{ $movie->rating_count }}</td>
                                 <td>{{ $movie->rating_star }}</td>
                                 <td>
+                                    <a href="{{ route('admin.episodes.create', $movie->id) }}" class="btn btn-primary">Create Episodes</a>
+                                </td>
+                                <td>
                                     <a href="{{ route('admin.movies.edit', $movie->id) }}" class="btn btn-primary">Edit</a>
+                                </td>
+                                <td>
                                     <form action="{{ route('admin.movies.delete', $movie->id) }}" method="POST">
                                         @csrf
-                                        @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
@@ -74,9 +87,17 @@
     <div class="row content-row-pagination">
         <div class="col-md-12">
             <ul class="pagination">
-                @if ($current_page >= 1)
+                @if ($current_page <= 1)
                     <li class="disable"><a href="#">PREV</a></li>
-                    @for ($i = 1; $i < $total_pages; $i++)
+                    @for ($i = 1; $i <= $total_pages; $i++)
+                        <li class="">
+                            <a href="{{ $path }}?page={{ $i }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+                    <li class="active"><a href="{{ $path }}?page={{ $current_page + 1 }}">NEXT</a></li>
+                @else
+                    <li class="active"><a href="{{ $path }}?page={{ $current_page - 1 }}">PREV</a></li>
+                    @for ($i = 1; $i <= $total_pages; $i++)
                         <li class="">
                             <a href="{{ $path }}?page={{ $i }}">{{ $i }}</a>
                         </li>

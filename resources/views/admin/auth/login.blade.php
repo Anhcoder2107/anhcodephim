@@ -30,14 +30,15 @@
 
 <body>
     <div class="container">
-        <form class="form-signin" role="form" action="index.html">
+        <form class="form-signin" role="form" method="POST" action="{{ route('admin.login') }}">
+            @csrf
             <h3 class="form-signin-heading">Please sign in</h3>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class="glyphicon glyphicon-user"></i>
                     </div>
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Username"
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email"
                         autocomplete="off" />
                 </div>
             </div>

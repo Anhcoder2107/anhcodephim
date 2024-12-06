@@ -26,4 +26,14 @@ class Movies extends Model
         'language',
         'publish_year',
     ];
+
+    //foeign key with category_movie
+    public function categories(){
+        return $this->belongsToMany(Categories::class, 'category_movie', 'movie_id', 'category_id');
+    }
+
+    //foreign key with episodes
+    public function episodes(){
+        return $this->hasMany(Episodes::class);
+    }
 }
