@@ -25,12 +25,6 @@ Xem Phim | {{$movie->name}}
             <div class="row">
                 <div class="col-lg-12">
                     <div class="anime__video__player">
-                        {{-- <video id="player" playsinline controls data-poster="{{ $movie->poster_url }}"> --}}
-                            {{-- <source src="{{ $episode_first->link }}" type="video/mp4" /> --}}
-                                {{-- <embed src="{{ $episode_first->link }}" type="embed"> --}}
-                            <!-- Captions are optional -->
-                            {{-- <track kind="captions" label="English captions" src="#" srclang="en" default /> --}}
-                        {{-- </video> --}}
                   <iframe width="100%" height="600" src="{{ $episode_first->link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                     </div>

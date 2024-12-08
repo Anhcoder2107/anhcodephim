@@ -18,48 +18,48 @@
             </div>
 
             <div class="panel-body">
-                <form novalidate="" role="form" class="form-horizontal" method="POST" action="{{ route('admin.episodes.create', $id) }}">
+                <form novalidate="" role="form" class="form-horizontal" method="POST" action="{{ route('admin.episodes.store', $id) }}">
                     @csrf
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="name">Movie Name</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Name" id="name" class="form-control"
-                                name="name">
+                            value="{{ $movie->name }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="origin_name">Episode Name</label>
+                        <label class="col-md-2 control-label" for="name">Episodes Name</label>
                         <div class="col-md-10">
-                            <input type="text" required="" placeholder="Origin Name" id="origin_name" class="form-control"
-                                name="origin_name">
+                            <input type="text" required="" placeholder="Name" id="name" class="form-control"
+                            name="name">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="slug">Slug</label>
+                        <label class="col-md-2 control-label" for="slug">Episodes Slug</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Slug" id="slug" class="form-control"
                                 name="slug">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="poster_url">type</label>
+                        <label class="col-md-2 control-label" for="poster_url">Episodes Type</label>
                         <div class="col-md-10">
-                            <input type="text" required="" placeholder="Poster_url" id="poster_url" class="form-control"
-                                name="poster_url">
+                            <input type="text" required="" placeholder="m3u8|embed" id="poster_url" class="form-control"
+                                name="type">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="description">Episode Link</label>
                         <div class="col-md-10">
                             <textarea required="" class="form-control" placeholder="Content" rows="10" cols="30" id="description"
-                                name="content"></textarea>
+                                name="link"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="thumb_url">Serve</label>
+                        <label class="col-md-2 control-label" for="thumb_url">Episodes Serve</label>
                         <div class="col-md-10">
-                            <input type="text" required="" placeholder="Thumb_url" id="thumb_url" class="form-control"
-                                name="thumb_url">
+                            <input type="text" required="" placeholder="Vietsub #1" id="thumb_url" class="form-control"
+                                name="server">
                         </div>
                     </div>
                     <div class="form-group">

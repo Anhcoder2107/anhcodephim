@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Actors extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name','name_md5', 'slug'];
 }

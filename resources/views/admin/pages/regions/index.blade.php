@@ -1,14 +1,14 @@
 @extends('admin.layout.maste-admin')
 @section('title')
-    Episosdes Admin
+    Regions Admin
 @endsection
 @section('container')
 
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
-            <h1 id="tables" class="page-header">Episodes
+            <h1 id="tables" class="page-header">Regions
             <div class="nav nav-tabs" style="padding-bottom:18px;background-color:white">
-                <a href="{{ route('admin.episodes.create', $id) }}" class="btn-lg btn-primary mt-3">Create Episodes</a>
+                <a href="{{ route('admin.regions.create') }}" class="btn-lg btn-primary mt-3">Create Regions</a>
             </div>
         </h1>
             <div class="table-responsive">
@@ -16,34 +16,22 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Episodes Movie Name</th>
-                            <th>Episodes server</th>
-                            <th>Episodes Name</th>
-                            <th>Episodes Slug</th>
-                            <th>Episodes Type</th>
-                            <th>Episodes Link</th>
-                            <th>Episodes Report</th>
-                            <th>Episodes Report Message</th>
-                            <th colspan="2">Actions</th>
+                            <th>Regions Name</th>
+                            <th>Regions Slug</th>
+                            <th rowspan="2">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($episodes as $episode)
+                        @foreach ($regions as $region)
                             <tr>
-                                <td>{{ $episode->id }}</td>
-                                <td>{{ $episode->movie->name }}</td>
-                                <td>{{ $episode->server }}</td>
-                                <td>{{ $episode->name }}</td>
-                                <td>{{ $episode->slug }}</td>
-                                <td>{{ $episode->type }}</td>
-                                <td>{{ $episode->link }}</td>
-                                <td>{{ $episode->has_report }}</td>
-                                <td>{{ $episode->report_message }}</td>
+                                <td>{{ $region->id }}</td>
+                                <td>{{ $region->name }}</td>
+                                <td>{{ $region->slug }}</td>
                                 <td>
-                                    <a href="{{ route('admin.episodes.edit', $episode->id) }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.regions.edit', $region->id) }}" class="btn btn-primary">Edit</a>
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.episodes.delete', $episode->id) }}" method="POST">
+                                    <form action="{{ route('admin.regions.delete', $region->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>

@@ -68,34 +68,53 @@
                     <li class="list-group-item"><a href="index.html"><i class="glyphicon glyphicon-home"></i>Dashboard
                         </a></li>
                     <li>
-                        <a href="#demo3" class="list-group-item " data-toggle="collapse">Movie <span
+                        <a href="#demo4" class="list-group-item " data-toggle="collapse">Movie<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
-                        <div class="collapse" id="demo3">
-                            <a href="#SubMenu1" class="list-group-item" data-toggle="collapse">Danh sách phim <span
-                                    class="glyphicon glyphicon-chevron-right"></span></a>
-                            <div class="collapse list-group-submenu" id="SubMenu1">
-                                <a href="#" class="list-group-item">Subitem 1 a</a>
-                                <a href="#" class="list-group-item">Subitem 2 b</a>
-                                <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse">Subitem 3 c
-                                    <span class="glyphicon glyphicon-chevron-right"></span></a>
-                                <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
-                                    <a href="#" class="list-group-item">Sub sub item 1</a>
-                                    <a href="#" class="list-group-item">Sub sub item 2</a>
-                                </div>
-                                <a href="#" class="list-group-item">Subitem 4 d</a>
-                            </div>
-                            <a href="javascript:;" class="list-group-item">Thêm mới</a>
-                        </div>
+                    </li>
+                    <li class="collapse" id="demo4">
+                        <a href="{{ route('admin.movies') }}" class="list-group-item">Danh Sách Phim</a>
+                        <a href="{{ route('admin.movies.create') }}" class="list-group-item">Thêm Mới Phim</a>
                     </li>
                     <li>
-                        <a href="#demo4" class="list-group-item " data-toggle="collapse">Item 4 <span
+                        <a href="#demo1" class="list-group-item " data-toggle="collapse">Category<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
-                    <li class="collapse" id="demo4">
-                        <a href="" class="list-group-item">Subitem 1</a>
-                        <a href="" class="list-group-item">Subitem 2</a>
-                        <a href="" class="list-group-item">Subitem 3</a>
                     </li>
+                    <li class="collapse" id="demo1">
+                        <a href="{{ route('admin.categories') }}" class="list-group-item">Danh Sách Danh Mục</a>
+                        <a href="{{ route('admin.categories.create') }}" class="list-group-item">Thêm Mới Danh Mục</a>
                     </li>
+                    <li>
+                        <a href="#demo2" class="list-group-item " data-toggle="collapse">Actors<span
+                                class="glyphicon glyphicon-chevron-right"></span></a>
+                    </li>
+                    <li class="collapse" id="demo2">
+                        <a href="{{ route('admin.actors') }}" class="list-group-item">Danh Sách Diễn Viên</a>
+                        <a href="{{ route('admin.actors.create') }}" class="list-group-item">Thêm Mới Diễn Viên</a>
+                    </li>
+                    <li>
+                        <a href="#demo3" class="list-group-item " data-toggle="collapse">Directors<span
+                                class="glyphicon glyphicon-chevron-right"></span></a>
+                    </li>
+                    <li class="collapse" id="demo3">
+                        <a href="{{ route('admin.directors') }}" class="list-group-item">Danh Sách Đạo Diễn</a>
+                        <a href="{{ route('admin.directors.create') }}" class="list-group-item">Thêm Mới Đạo Diễn</a>
+                    </li>
+                    <li>
+                        <a href="#demo5" class="list-group-item " data-toggle="collapse">Regions<span
+                                class="glyphicon glyphicon-chevron-right"></span></a>
+                    </li>
+                    <li class="collapse" id="demo5">
+                        <a href="{{ route('admin.regions') }}" class="list-group-item">Danh Sách Khu Vực</a>
+                        <a href="{{ route('admin.regions.create') }}" class="list-group-item">Thêm Mới Khu Vực</a>
+                    </li>
+                    <li>
+                        <a href="#demo6" class="list-group-item " data-toggle="collapse">Episodes<span
+                                class="glyphicon glyphicon-chevron-right"></span></a>
+                    </li>
+                    <li class="collapse" id="demo6">
+                        <a href="{{ route('admin.espiodes') }}" class="list-group-item">Danh Sách Tập Phim</a>
+                    </li>
+
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-9 content">
@@ -113,98 +132,39 @@
         </div>
     </div>
     <!--footer-->
-    <div class="site-footer">
+    <div class="footer">
         <div class="container">
-            <div class="download">
-                <span class="download__infos">You simply have to <b>try it</b>.</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="btn btn-primary"
-                    href="https://github.com/silverbux/bootflat-admin/archive/master.zip">Download
-                    Bootflat-Admin</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <!-- SmartAddon BEGIN -->
-                <script type="text/javascript">
-                    (function() {
-                        var s = document.createElement('script');
-                        s.type = 'text/javascript';
-                        s.async = true;
-                        s.src = 'http://s1' + '.smartaddon.com/share_addon.js';
-                        var j = document.getElementsByTagName('script')[0];
-                        j.parentNode.insertBefore(s, j);
-                    })();
-                </script>
-
-                <a href="http://www.smartaddon.com/?share" title="Share Button"
-                    onclick="return sa_tellafriend('','bookmarks')"><img alt="Share"
-                        src="http://bootflat.github.io/img/share.gif" border="0" /></a>
-                <!-- SmartAddon END -->
+            <div class="clearfix">
+                <div class="footer-logo"><a href="#">Bootflat-Admin</a></div>
+                <dl class="footer-nav">
+                    <dt class="nav-title">PORTFOLIO</dt>
+                    <dd class="nav-item"><a href="#">Web Design</a></dd>
+                    <dd class="nav-item"><a href="#">Branding &amp; Identity</a></dd>
+                    <dd class="nav-item"><a href="#">Mobile Design</a></dd>
+                    <dd class="nav-item"><a href="#">Print</a></dd>
+                    <dd class="nav-item"><a href="#">User Interface</a></dd>
+                </dl>
+                <dl class="footer-nav">
+                    <dt class="nav-title">ABOUT</dt>
+                    <dd class="nav-item"><a href="#">The Company</a></dd>
+                    <dd class="nav-item"><a href="#">History</a></dd>
+                    <dd class="nav-item"><a href="#">Vision</a></dd>
+                </dl>
+                <dl class="footer-nav">
+                    <dt class="nav-title">GALLERY</dt>
+                    <dd class="nav-item"><a href="#">Flickr</a></dd>
+                    <dd class="nav-item"><a href="#">Picasa</a></dd>
+                    <dd class="nav-item"><a href="#">iStockPhoto</a></dd>
+                    <dd class="nav-item"><a href="#">PhotoDune</a></dd>
+                </dl>
+                <dl class="footer-nav">
+                    <dt class="nav-title">CONTACT</dt>
+                    <dd class="nav-item"><a href="#">Basic Info</a></dd>
+                    <dd class="nav-item"><a href="#">Map</a></dd>
+                    <dd class="nav-item"><a href="#">Conctact Form</a></dd>
+                </dl>
             </div>
-            <hr class="dashed" />
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>Get involved</h3>
-                    <p>Bootflat is hosted on <a href="https://github.com/silverbux/bootflat-admin" target="_blank"
-                            rel="external nofollow">GitHub</a> and open for everyone to contribute. Please give us some
-                        feedback and join the development!</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Contribute</h3>
-                    <p>You want to help us and participate in the development or the documentation? Just fork Bootflat
-                        on <a href="https://github.com/silverbux/bootflat-admin" target="_blank"
-                            rel="external nofollow">GitHub</a> and send us a pull request.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Found a bug?</h3>
-                    <p>Open a <a href="https://github.com/silverbux/bootflat-admin/issues" target="_blank"
-                            rel="external nofollow">new issue</a> on GitHub. Please search for existing issues first
-                        and make sure to include all relevant information.</p>
-                </div>
-            </div>
-            <hr class="dashed" />
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Talk to us</h3>
-                    <ul>
-                        <li>Tweet us at <a href="https://twitter.com"
-                                target="_blank">@YourTwitter</a>&nbsp;&nbsp;&nbsp;&nbsp;Email us at <span
-                                class="connect">info@yourdomain.com</span></li>
-                        <li>
-                            <a title="Twitter" href="https://twitter.com" target="_blank" rel="external nofollow"><i
-                                    class="icon" data-icon="&#xe121"></i></a>
-                            <a title="Facebook" href="https://www.facebook.com" target="_blank"
-                                rel="external nofollow"><i class="icon" data-icon="&#xe10b"></i></a>
-                            <a title="Google+" href="https://plus.google.com/" target="_blank"
-                                rel="external nofollow"><i class="icon" data-icon="&#xe110"></i></a>
-                            <a title="Github" href="https://github.com/alexquiambao" target="_blank"
-                                rel="external nofollow"><i class="icon" data-icon="&#xe10e"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <!-- Begin MailChimp Signup Form -->
-                    <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet"
-                        type="text/css">
-                    <div id="mc_embed_signup">
-                        <h3 style="margin-bottom: 15px;">Newsletter</h3>
-                        <form action="" method="post" id="mc-embedded-subscribe-form"
-                            name="mc-embedded-subscribe-form" class="validate" novalidate>
-                            <input style="margin-bottom: 10px;" type="email" value="" name="EMAIL"
-                                class="email form-control" id="mce-EMAIL" placeholder="email address" required>
-                            <span class="clear"><input type="submit" value="Subscribe" name="subscribe"
-                                    id="mc-embedded-subscribe" class="btn btn-primary"></span>
-                        </form>
-                    </div>
-                    <!--End mc_embed_signup-->
-                </div>
-            </div>
-            <hr class="dashed" />
-            <div class="copyright clearfix">
-                <p><b>Bootflat</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="getting-started.html">Getting
-                        Started</a>&nbsp;&bull;&nbsp;<a href="index.html">Documentation</a>&nbsp;&bull;&nbsp;<a
-                        href="https://github.com/Bootflat/Bootflat.UI.Kit.PSD/archive/master.zip">Free
-                        PSD</a>&nbsp;&bull;&nbsp;<a href="colors.html">Color Picker</a></p>
-                <p>Code licensed under <a href="http://opensource.org/licenses/mit-license.html" target="_blank"
-                        rel="external nofollow">MIT License</a>, documentation under <a
-                        href="http://creativecommons.org/licenses/by/3.0/" rel="external nofollow">CC BY 3.0</a>.</p>
-            </div>
+            <div class="footer-copyright text-center">Copyright &copy; 2014 YourCompany.All rights reserved.</div>
         </div>
     </div>
 </body>

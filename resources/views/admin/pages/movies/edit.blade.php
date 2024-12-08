@@ -49,8 +49,7 @@
                         <label class="col-md-2 control-label" for="description">Content</label>
                         <div class="col-md-10">
                             <textarea required="" class="form-control" placeholder="Content" rows="10" cols="30" id="description"
-                                value="{{ $movie->content }}"
-                            name="content"></textarea>
+                            name="content">{{ $movie->content }}</textarea>
                         </div>
                     </div>
                     <div class="form-group">

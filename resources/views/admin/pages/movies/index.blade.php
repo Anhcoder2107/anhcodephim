@@ -31,6 +31,7 @@
                             <th>Movie View Month</th>
                             <th>Movie Rating Count</th>
                             <th>Movie Rating Star</th>
+                            <th>Movie Episodes</th>
                             <th>Movie Create Episodes</th>
                             <th colspan="2">Actions</th>
                         </tr>
@@ -64,6 +65,9 @@
                                 <td>{{ $movie->view_month }}</td>
                                 <td>{{ $movie->rating_count }}</td>
                                 <td>{{ $movie->rating_star }}</td>
+                                <td>
+                                    <a href="{{ route('admin.episodes.movie_id', $movie->id) }}" class="btn btn-primary">Episodes</a>
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.episodes.create', $movie->id) }}" class="btn btn-primary">Create Episodes</a>
                                 </td>

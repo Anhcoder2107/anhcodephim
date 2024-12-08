@@ -21,31 +21,35 @@ class EpisodesController extends Controller
     }
 
     public function create($id){
-        return view('admin.pages.episodes.create', compact('id'));
+        $movie = Movies::find($id);
+        return view('admin.pages.episodes.create', compact('id', 'movie'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request, $id){
         $episode = new Episodes();
+        $request['movie_id'] = $id;
         $episode->create($request->all());
-        return redirect()->route('admin.episodes')->with('success', 'Episode added successfully');
+        return redirect()->route('admin.episodes.movie_id', $id)->with('success', 'Episode added successfully');
     }
 
     public function edit($id){
         $episode = Episodes::find($id);
-        return view('admin.pages.episodes.edit', compact('episode'));
+        return view('admin.pages.episodes.edit', compact('episode', 'id'));
     }
 
     public function update(Request $request, $id){
         $episode = Episodes::find($id);
         $episode->update($request->all());
-        return redirect()->route('admin.episodes')->with('success', 'Episode updated successfully');
+        $movie_id = $episode->movie_id;
+        return redirect()->route('admin.episodes.movie_id', $movie_id)->with('success', 'Episode updated successfully');
     }
 
 
     public function delete($id){
         $episode = Episodes::find($id);
         $episode->delete();
-        return redirect()->route('admin.episodes')->with('success', 'Episode deleted successfully');
+        $movie_id = $episode->movie_id;
+        return redirect()->route('admin.episodes.movie_id', $movie_id)->with('success', 'Episode deleted successfully');
     }
 
 
@@ -54,7 +58,7 @@ class EpisodesController extends Controller
         $total_pages = $episodes->lastPage();
         $current_page = $episodes->currentPage();
         $path = $episodes->path();
-        return view('admin.pages.episodes.index', compact('episodes', 'total_pages', 'current_page', 'path'));
+        return view('admin.pages.episodes.index', compact('episodes', 'total_pages', 'current_page', 'path', 'id'));
     }
 
 
