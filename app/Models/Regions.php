@@ -10,4 +10,9 @@ class Regions extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'slug'];
+
+    public function movies(){
+        return $this->belongsToMany(Movies::class, 'region_movie', 'region_id', 'movie_id');
+    }
+
 }

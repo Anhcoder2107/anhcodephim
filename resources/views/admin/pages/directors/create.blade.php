@@ -18,20 +18,29 @@
             </div>
 
             <div class="panel-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form novalidate="" role="form" class="form-horizontal" method="POST" action="{{ route('admin.directors.store') }}">
                     @csrf
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="name">Directors Name</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Name" id="name" class="form-control"
-                            name="name">
+                            name="name" value="{{ old('name') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="slug">Directors Slug</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Slug" id="slug" class="form-control"
-                                name="slug">
+                            value="{{ old('slug') }}"    name="slug">
                         </div>
                     </div>
                     <div class="form-group">

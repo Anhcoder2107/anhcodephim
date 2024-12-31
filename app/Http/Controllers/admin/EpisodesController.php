@@ -9,11 +9,9 @@ use App\Models\Movies;
 
 class EpisodesController extends Controller
 {
-    //
 
     public function index(){
         $episodes = Episodes::paginate(10);
-
         $total_pages = $episodes->lastPage();
         $current_page = $episodes->currentPage();
         $path = $episodes->path();
@@ -26,6 +24,13 @@ class EpisodesController extends Controller
     }
 
     public function store(Request $request, $id){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'link' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'type' => 'required|max:255',
+        ]);
+
         $episode = new Episodes();
         $request['movie_id'] = $id;
         $episode->create($request->all());
@@ -38,6 +43,13 @@ class EpisodesController extends Controller
     }
 
     public function update(Request $request, $id){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'link' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'type' => 'required|max:255',
+        ]);
+
         $episode = Episodes::find($id);
         $episode->update($request->all());
         $movie_id = $episode->movie_id;
@@ -54,11 +66,11 @@ class EpisodesController extends Controller
 
 
     public function episodeByMovie($id){
-        $episodes = Episodes::where('movie_id', $id)->paginate(10);
+        $episodes = Episodes::where('movie_id', $id)->orderBy('id', 'desc')->paginate(10);
         $total_pages = $episodes->lastPage();
         $current_page = $episodes->currentPage();
         $path = $episodes->path();
-        return view('admin.pages.episodes.index', compact('episodes', 'total_pages', 'current_page', 'path', 'id'));
+        return view('admin.pages.episodes.show', compact('episodes', 'total_pages', 'current_page', 'path', 'id'));
     }
 
 

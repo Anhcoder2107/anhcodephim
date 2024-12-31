@@ -10,4 +10,11 @@ class Categories extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'slug'];
+
+    public function movies()
+    {
+        return $this->belongsToMany(Movies::class, 'category_movie', 'category_id', 'movie_id');
+    }
+
+
 }

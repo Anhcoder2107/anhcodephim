@@ -36,4 +36,19 @@ class Movies extends Model
     public function episodes(){
         return $this->hasMany(Episodes::class);
     }
+
+    //foreign key with actor_movie
+    public function actors(){
+        return $this->belongsToMany(Actors::class, 'actor_movie', 'movie_id', 'actor_id');
+    }
+
+    //foreign key with director_movie
+    public function directors(){
+        return $this->belongsToMany(Directors::class, 'director_movie', 'movie_id', 'director_id');
+    }
+
+    //foreign key with region_movie
+    public function regions(){
+        return $this->belongsToMany(Regions::class, 'region_movie', 'movie_id', 'region_id');
+    }
 }

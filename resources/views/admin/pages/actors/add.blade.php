@@ -1,12 +1,12 @@
 @extends('admin.layout.maste-admin')
 @section('title')
-    Create Category Admin
+    Add Actor Admin
 @endsection
 @section('container')
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <div class="panel-title"><b>Create Episodes Movie</b>
+                <div class="panel-title"><b>Add Actor Movie</b>
                 </div>
 
                 <div class="panel-options">
@@ -27,20 +27,21 @@
                         </ul>
                     </div>
                 @endif
-                <form novalidate="" role="form" class="form-horizontal" method="POST" action="{{ route('admin.categories.store') }}">
+                <form novalidate="" role="form" class="form-horizontal" method="POST" action="{{ route('admin.actors.add.post', $id) }}">
                     @csrf
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="name">Category Name</label>
-                        <div class="col-md-10">
-                            <input type="text" required="" placeholder="Name" id="name" class="form-control"
-                        value="{{ old('name') }}"   name="name">
+                        <label class="col-md-2 control-label" for="actor">Select Actor</label>
+                        <div class="col-md-8">
+                            <select id="actor" class="form-control select2" name="actor_id">
+                                <option value="">-- Select Actor --</option>
+                                @foreach ($actors as $actor)
+                                    <option value="{{ $actor->id }}">{{ $actor->name }}</option>
+                                @endforeach
+
+                            </select>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="slug">Category Slug</label>
-                        <div class="col-md-10">
-                            <input type="text" required="" placeholder="Slug" id="slug" class="form-control"
-                            value="{{ old('slug') }}"    name="slug">
+                        <div class="col-md-2">
+                            <a href="{{ route('admin.actors.create') }}" class="btn btn-primary">Add New</a>
                         </div>
                     </div>
                     <div class="form-group">
@@ -51,6 +52,21 @@
                 </form>
             </div>
         </div>
-
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: "-- Select Director --",
+                allowClear: true
+            });
+        });
+    </script>
+@endsection
+
+@section('styles')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 @endsection

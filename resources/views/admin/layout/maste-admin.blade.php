@@ -18,6 +18,7 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="{{ asset('dist/js/site.min.js') }}"></script>
+    @yield('styles')
 </head>
 
 <body>
@@ -65,7 +66,7 @@
                     <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>SIDE PANEL</b></li>
                     <li class="list-group-item"><input type="text" class="form-control search-query"
                             placeholder="Search Something"></li>
-                    <li class="list-group-item"><a href="index.html"><i class="glyphicon glyphicon-home"></i>Dashboard
+                    <li class="list-group-item"><a href="{{ route('admin.home') }}"><i class="glyphicon glyphicon-home"></i>Dashboard
                         </a></li>
                     <li>
                         <a href="#demo4" class="list-group-item " data-toggle="collapse">Movie<span
@@ -167,6 +168,12 @@
             <div class="footer-copyright text-center">Copyright &copy; 2014 YourCompany.All rights reserved.</div>
         </div>
     </div>
+
+    {{-- js --}}
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>

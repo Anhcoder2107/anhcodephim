@@ -32,7 +32,10 @@
                             <th>Movie Rating Count</th>
                             <th>Movie Rating Star</th>
                             <th>Movie Episodes</th>
-                            <th>Movie Create Episodes</th>
+                            <th>Movie Actors</th>
+                            <th>Movie Directors</th>
+                            <th>Movie Categories</th>
+                            <th>Movie Regions</th>
                             <th colspan="2">Actions</th>
                         </tr>
                     </thead>
@@ -69,7 +72,16 @@
                                     <a href="{{ route('admin.episodes.movie_id', $movie->id) }}" class="btn btn-primary">Episodes</a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.episodes.create', $movie->id) }}" class="btn btn-primary">Create Episodes</a>
+                                    <a href="{{ route('admin.actors.movie_id', $movie->id) }}" class="btn btn-primary" >Actors</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.directors.movie_id', $movie->id) }}" class="btn btn-primary">Directors</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.categories.movie_id', $movie->id) }}" class="btn btn-primary">Categories</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.regions.movie_id', $movie->id) }}" class="btn btn-primary">Regions</a>
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.movies.edit', $movie->id) }}" class="btn btn-primary">Edit</a>

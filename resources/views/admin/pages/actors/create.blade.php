@@ -18,6 +18,15 @@
             </div>
 
             <div class="panel-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form novalidate="" role="form" class="form-horizontal" method="POST" action="{{ route('admin.actors.store') }}">
                     @csrf
                     <div class="form-group">

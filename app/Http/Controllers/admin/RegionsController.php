@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Regions;
+use App\Models\RegionMovie;
 
 class RegionsController extends Controller
 {
@@ -34,8 +35,15 @@ class RegionsController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|unique:regions,name|max:255',
+            'slug' => 'required|max:255'
+        ]);
+
+
         $region = new Regions();
         $region->create($request->all());
+
         return redirect()->route('admin.regions');
     }
 
@@ -56,6 +64,11 @@ class RegionsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255'
+        ]);
+
         $region = Regions::find($id);
         $region->update($request->all());
         return redirect()->route('admin.regions');
@@ -69,5 +82,48 @@ class RegionsController extends Controller
         $region = Regions::find($id);
         $region->delete();
         return redirect()->route('admin.regions');
+    }
+
+    //show regionmovie
+    public function show(string $id)
+    {
+        $region = Regions::find($id);
+        $region_movies = RegionMovie::where('movie_id', $id)->paginate(10);
+        $total_pages = $region_movies->lastPage();
+        $current_page = $region_movies->currentPage();
+        $path = $region_movies->path();
+        return view('admin.pages.regions.show', compact('region_movies', 'region', 'id', 'total_pages', 'current_page', 'path'));
+    }
+
+    //add regionmovie
+    public function addGet(string $id)
+    {
+        $region_movie = RegionMovie::where('movie_id', $id)->get();
+        $regions = Regions::all()->whereNotIn('id', $region_movie->pluck('region_id'));
+        return view('admin.pages.regions.add', compact('regions', 'id'));
+    }
+
+    public function addPost(Request $request, string $id)
+    {
+        $validated = $request->validate([
+            'region_id' => 'required'
+        ]);
+
+        $validated = request()->safe()->only('region_id');
+
+        $region_movie = new RegionMovie();
+        $region_movie->region_id = $request->region_id;
+        $region_movie->movie_id = $id;
+        $region_movie->timestamps = false;
+        $region_movie->save();
+        return redirect()->route('admin.regions.movie_id', $id);
+    }
+
+    //delete regionmovie
+    public function deleteRegion(string $id, string $movie_id)
+    {
+        $region_movie = RegionMovie::where('region_id', $id)->where('movie_id', $movie_id);
+        $region_movie->delete();
+        return redirect()->route('admin.regions.movie_id', $id);
     }
 }

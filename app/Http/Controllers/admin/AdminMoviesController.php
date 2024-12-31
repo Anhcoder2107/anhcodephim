@@ -28,6 +28,12 @@ class AdminMoviesController extends Controller
     }
 
     public function store(Request $request){
+        $validated = $request->validate([
+            'name' => 'required|unique:movies,name|max:1024',
+            'slug' => 'required|max:255',
+            'origin_name' => 'required|max:1024',
+        ]);
+
         $movie = new Movies();
         $movie->create($request->all());
         return redirect()->route('admin.movies')->with('success', 'Movie added successfully');
@@ -40,6 +46,11 @@ class AdminMoviesController extends Controller
     }
 
     public function update(Request $request, $id){
+        $validated = $request->validate([
+            'name' => 'required|max:1024',
+            'slug' => 'required|max:255',
+            'origin_name' => 'required|max:1024',
+        ]);
         $movie = Movies::find($id);
         $movie->update($request->all());
         return redirect()->route('admin.movies')->with('success', 'Movie updated successfully');

@@ -1,48 +1,32 @@
 @extends('admin.layout.maste-admin')
 @section('title')
-    Episosdes Admin
+    Directors Admin
 @endsection
 @section('container')
 
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
-            <h1 id="tables" class="page-header">
-                Episodes
-            </h1>
+            <h1 id="tables" class="page-header">Directors
+            <div class="nav nav-tabs" style="padding-bottom:18px;background-color:white">
+                <a href="{{ route('admin.directors.add', $movie_id) }}" class="btn-lg btn-primary mt-3">Add Directors</a>
+            </div>
+        </h1>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Episodes Movie Name</th>
-                            <th>Episodes server</th>
-                            <th>Episodes Name</th>
-                            <th>Episodes Slug</th>
-                            <th>Episodes Type</th>
-                            <th>Episodes Link</th>
-                            <th>Episodes Report</th>
-                            <th>Episodes Report Message</th>
-                            <th colspan="2">Actions</th>
+                            <th>Movie Name</th>
+                            <th>Director Name</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($episodes as $episode)
+                        @foreach ($directorMovies as $directorMovie)
                             <tr>
-                                <td>{{ $episode->id }}</td>
-                                <td>{{ $episode->movie->name }}</td>
-                                <td>{{ $episode->server }}</td>
-                                <td>{{ $episode->name }}</td>
-                                <td>{{ $episode->slug }}</td>
-                                <td>{{ $episode->type }}</td>
-                                <td>{{ $episode->link }}</td>
-                                <td>{{ $episode->has_report }}</td>
-                                <td>{{ $episode->report_message }}</td>
+                                <td>{{ $directorMovie->movie->name  }}</td>
+                                <td>{{ $directorMovie->director->name  }}</td>
                                 <td>
-                                    <a href="{{ route('admin.episodes.edit', $episode->id) }}"
-                                        class="btn btn-primary">Edit</a>
-                                </td>
-                                <td>
-                                    <form action="{{ route('admin.episodes.delete', $episode->id) }}" method="POST">
+                                    <form action="{{ route('admin.directors.delete.post', [$directorMovie->director->id, $movie_id,]) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>

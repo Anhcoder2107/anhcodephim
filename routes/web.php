@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\CategoriesController as AdminCategoriesController
 use App\Http\Controllers\admin\ActorsController;
 use App\Http\Controllers\admin\DirectorsController;
 use App\Http\Controllers\admin\RegionsController;
+use App\Http\Controllers\admin\UsersController;
 
 
 /*
@@ -84,13 +85,16 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::post('categories/update/{id}', [AdminCategoriesController::class, 'update'])->name('categories.update');
     Route::post('categories/delete/{id}', [AdminCategoriesController::class, 'delete'])->name('categories.delete');
 
+    Route::get('categories/show/{id}', [AdminCategoriesController::class, 'show'])->name('categories.movie_id');
+    Route::get('categories/add/{id}', [AdminCategoriesController::class, 'addGet'])->name('categories.add');
+    Route::post('categories/add/{id}', [AdminCategoriesController::class, 'addPost'])->name('categories.add.post');
+    Route::post('categories/delete/{id}/{movie_id}', [AdminCategoriesController::class, 'deleteCategory'])->name('categories.delete.post');
+
     //users admin
-    Route::get('users', [AdminMoviesController::class, 'users'])->name('users');
-    Route::get('users/create', [AdminMoviesController::class, 'createUser'])->name('users.create');
-    Route::post('users/store', [AdminMoviesController::class, 'storeUser'])->name('users.store');
-    Route::get('users/edit/{id}', [AdminMoviesController::class, 'editUser'])->name('users.edit');
-    Route::post('users/update/{id}', [AdminMoviesController::class, 'updateUser'])->name('users.update');
-    Route::post('users/delete/{id}', [AdminMoviesController::class, 'deleteUser'])->name('users.delete');
+    Route::get('users', [UsersController::class, 'users'])->name('users');
+    Route::get('users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::post('users/update/{id}', [UsersController::class, 'update'])->name('users.update');
+    Route::post('users/delete/{id}', [UsersController::class, 'delete'])->name('users.delete');
 
     //directors admin
     Route::get('directors', [DirectorsController::class, 'index'])->name('directors');
@@ -100,6 +104,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::post('directors/update/{id}', [DirectorsController::class, 'update'])->name('directors.update');
     Route::post('directors/delete/{id}', [DirectorsController::class, 'delete'])->name('directors.delete');
 
+    Route::get('directors/show/{id}', [DirectorsController::class, 'directorByMovie'])->name('directors.movie_id');
+    Route::get('directors/add/{id}', [DirectorsController::class, 'addGet'])->name('directors.add');
+    Route::post('directors/add/{id}', [DirectorsController::class, 'addPost'])->name('directors.add.post');
+    Route::post('directors/delete/{id}/{movie_id}', [DirectorsController::class, 'deleteDirector'])->name('directors.delete.post');
+
     //actors admin
     Route::get('actors', [ActorsController::class, 'index'])->name('actors');
     Route::get('actors/create', [ActorsController::class, 'create'])->name('actors.create');
@@ -108,6 +117,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::post('actors/update/{id}', [ActorsController::class, 'update'])->name('actors.update');
     Route::post('actors/delete/{id}', [ActorsController::class, 'delete'])->name('actors.delete');
 
+    Route::get('actors/show/{id}', [ActorsController::class, 'show'])->name('actors.movie_id');
+    Route::get('actors/add/{id}', [ActorsController::class, 'addGet'])->name('actors.add');
+    Route::post('actors/add/{id}', [ActorsController::class, 'addPost'])->name('actors.add.post');
+    Route::post('actors/delete/{id}/{movie_id}', [ActorsController::class, 'deleteActor'])->name('actors.delete.post');
+
+
+
     //regions admin
     Route::get('regions', [RegionsController::class, 'index'])->name('regions');
     Route::get('regions/create', [RegionsController::class, 'create'])->name('regions.create');
@@ -115,6 +131,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::get('regions/edit/{id}', [RegionsController::class, 'edit'])->name('regions.edit');
     Route::post('regions/update/{id}', [RegionsController::class, 'update'])->name('regions.update');
     Route::post('regions/delete/{id}', [RegionsController::class, 'delete'])->name('regions.delete');
+
+    Route::get('regions/show/{id}', [RegionsController::class, 'show'])->name('regions.movie_id');
+    Route::get('regions/add/{id}', [RegionsController::class, 'addGet'])->name('regions.add');
+    Route::post('regions/add/{id}', [RegionsController::class, 'addPost'])->name('regions.add.post');
+    Route::post('regions/delete/{id}/{movie_id}', [RegionsController::class, 'deleteRegion'])->name('regions.delete.post');
 
     //permissions admin
     Route::get('permissions', [AdminMoviesController::class, 'index'])->name('permissions');

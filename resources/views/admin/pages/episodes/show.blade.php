@@ -6,9 +6,11 @@
 
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
-            <h1 id="tables" class="page-header">
-                Episodes
-            </h1>
+            <h1 id="tables" class="page-header">Episodes
+            <div class="nav nav-tabs" style="padding-bottom:18px;background-color:white">
+                <a href="{{ route('admin.episodes.create', $id) }}" class="btn-lg btn-primary mt-3">Create Episodes</a>
+            </div>
+        </h1>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -38,8 +40,7 @@
                                 <td>{{ $episode->has_report }}</td>
                                 <td>{{ $episode->report_message }}</td>
                                 <td>
-                                    <a href="{{ route('admin.episodes.edit', $episode->id) }}"
-                                        class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.episodes.edit', $episode->id) }}" class="btn btn-primary">Edit</a>
                                 </td>
                                 <td>
                                     <form action="{{ route('admin.episodes.delete', $episode->id) }}" method="POST">

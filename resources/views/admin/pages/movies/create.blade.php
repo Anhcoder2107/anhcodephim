@@ -18,66 +18,75 @@
             </div>
 
             <div class="panel-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form novalidate="" role="form" class="form-horizontal" method="POST" action="{{ route('admin.movies.store') }}">
                     @csrf
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="name">Name</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Name" id="name" class="form-control"
-                                name="name">
+                                name="name" value="{{ old('name') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="origin_name">Origin Name</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Origin Name" id="origin_name" class="form-control"
-                                name="origin_name">
+                                name="origin_name" value="{{ old('origin_name') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="slug">Slug</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Slug" id="slug" class="form-control"
-                                name="slug">
+                                name="slug" value="{{ old('slug') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="description">Content</label>
                         <div class="col-md-10">
                             <textarea required="" class="form-control" placeholder="Content" rows="10" cols="30" id="description"
-                                name="content"></textarea>
+                                name="content">{{ old('content') }}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="thumb_url">Thumb_url</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Thumb_url" id="thumb_url" class="form-control"
-                                name="thumb_url">
+                                name="thumb_url" value="{{ old('thumb_url') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="poster_url">Poster_url</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Poster_url" id="poster_url" class="form-control"
-                                name="poster_url">
+                                name="poster_url" value="{{ old('poster_url') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label">Type</label>
                         <div class="col-md-10">
-                            <select name="type" class="selecter_4" >
-                              <option value="single">Single</option>
-                              <option value="series">Series</option>
+                            <select name="type" class="selecter_4">
+                              <option value="single" {{ old('type') == 'single' ? 'selected' : '' }}>Single</option>
+                              <option value="series" {{ old('type') == 'series' ? 'selected' : '' }}>Series</option>
                             </select>
                           </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label">Status</label>
                         <div class="col-md-10">
-                            <select name="status" class="selecter_4" >
-                              <option value="trailer">Trailer</option>
-                              <option value="ongoing">Ongoing</option>
-                              <option value="completed">Completed</option>
+                            <select name="status" class="selecter_4">
+                              <option value="trailer" {{ old('status') == 'trailer' ? 'selected' : '' }}>Trailer</option>
+                              <option value="ongoing" {{ old('status') == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
+                              <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed</option>
                             </select>
                           </div>
                     </div>
@@ -85,63 +94,63 @@
                         <label class="col-md-2 control-label" for="trailer_url">Trailer_url</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Trailer_url" id="trailer_url" class="form-control"
-                                name="trailer_url">
+                                name="trailer_url" value="{{ old('trailer_url') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="episode_time">Episode_time</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="episode_time" id="episode_time" class="form-control"
-                                name="episode_time">
+                                name="episode_time" value="{{ old('episode_time') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="episode_current">Episode_current</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Episode_current" id="episode_current" class="form-control"
-                                name="episode_current">
+                                name="episode_current" value="{{ old('episode_current') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="episode_total">Episode_total</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Episode_total" id="episode_total" class="form-control"
-                                name="episode_total">
+                                name="episode_total" value="{{ old('episode_total') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="quality">Quality</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Quality" id="quality" class="form-control"
-                                name="quality">
+                                name="quality" value="{{ old('quality') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="language">Language</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Language" id="language" class="form-control"
-                                name="language">
+                                name="language" value="{{ old('language') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="notify">Notify</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Notify" id="notify" class="form-control"
-                                name="notify">
+                                name="notify" value="{{ old('notify') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="showtimes">Showtimes</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Showtimes" id="showtimes" class="form-control"
-                                name="showtimes">
+                                name="showtimes" value="{{ old('showtimes') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="publish_year">Publish_year</label>
                         <div class="col-md-10">
                             <input type="text" required="" placeholder="Publish_year" id="publish_year" class="form-control"
-                                name="publish_year">
+                                name="publish_year" value="{{ old('publish_year') }}">
                         </div>
                     </div>
                     <div class="form-group">
