@@ -1,50 +1,56 @@
 @extends('admin.layout.maste-admin')
 @section('title')
-    Episosdes Admin
+    User Admin
 @endsection
 @section('container')
-    @can('Browse episode', Auth::user())
-
 
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
-            <h1 id="tables" class="page-header">
-                Episodes
-            </h1>
+            <h1 id="tables" class="page-header">User
+            <div class="nav nav-tabs" style="padding-bottom:18px;background-color:white">
+                <a href="{{ route('admin.users.create') }}" class="btn-lg btn-primary mt-3">Create User</a>
+            </div>
+        </h1>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Episodes Movie Name</th>
-                            <th>Episodes server</th>
-                            <th>Episodes Name</th>
-                            <th>Episodes Slug</th>
-                            <th>Episodes Type</th>
-                            <th>Episodes Link</th>
-                            <th>Episodes Report</th>
-                            <th>Episodes Report Message</th>
-                            <th colspan="2">Actions</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Permission</th>
+                            <th>Add Role</th>
+                            <th>Add Permission</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($episodes as $episode)
+                        @foreach ($users as $user)
                             <tr>
-                                <td>{{ $episode->id }}</td>
-                                <td>{{ $episode->movie->name }}</td>
-                                <td>{{ $episode->server }}</td>
-                                <td>{{ $episode->name }}</td>
-                                <td>{{ $episode->slug }}</td>
-                                <td>{{ $episode->type }}</td>
-                                <td>{{ $episode->link }}</td>
-                                <td>{{ $episode->has_report }}</td>
-                                <td>{{ $episode->report_message }}</td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>
-                                    <a href="{{ route('admin.episodes.edit', $episode->id) }}"
-                                        class="btn btn-primary">Edit</a>
+                                    @foreach ($user->roles as $role)
+                                        <span class="label label-info">{{ $role->name }}</span>
+                                    @endforeach
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.episodes.delete', $episode->id) }}" method="POST">
+                                    <a href="{{ route('admin.users.show.permissions', $user->id) }}" class="btn btn-primary">Show Permissions</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.users.add', $user->id) }}" class="btn btn-primary">Add Role</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.users.permissions', $user->id) }}" class="btn btn-primary">Add Permission</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
@@ -80,5 +86,4 @@
             </ul>
         </div>
     </div>
-    @endcan
 @endsection

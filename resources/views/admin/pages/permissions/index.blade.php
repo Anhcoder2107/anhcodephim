@@ -1,50 +1,41 @@
 @extends('admin.layout.maste-admin')
 @section('title')
-    Episosdes Admin
+    Permissons Admin
 @endsection
 @section('container')
-    @can('Browse episode', Auth::user())
-
 
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
-            <h1 id="tables" class="page-header">
-                Episodes
-            </h1>
+            <h1 id="tables" class="page-header">Permissons
+            <div class="nav nav-tabs" style="padding-bottom:18px;background-color:white">
+                <a href="{{ route('admin.permissions.create') }}" class="btn-lg btn-primary mt-3">Create Permissons</a>
+            </div>
+        </h1>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Episodes Movie Name</th>
-                            <th>Episodes server</th>
-                            <th>Episodes Name</th>
-                            <th>Episodes Slug</th>
-                            <th>Episodes Type</th>
-                            <th>Episodes Link</th>
-                            <th>Episodes Report</th>
-                            <th>Episodes Report Message</th>
-                            <th colspan="2">Actions</th>
+                            <th>Permissons Name</th>
+                            <th>Add Role</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($episodes as $episode)
+                        @foreach ($permissions as $permission)
                             <tr>
-                                <td>{{ $episode->id }}</td>
-                                <td>{{ $episode->movie->name }}</td>
-                                <td>{{ $episode->server }}</td>
-                                <td>{{ $episode->name }}</td>
-                                <td>{{ $episode->slug }}</td>
-                                <td>{{ $episode->type }}</td>
-                                <td>{{ $episode->link }}</td>
-                                <td>{{ $episode->has_report }}</td>
-                                <td>{{ $episode->report_message }}</td>
+                                <td>{{ $permission->id }}</td>
+                                <td>{{ $permission->name }}</td>
+
                                 <td>
-                                    <a href="{{ route('admin.episodes.edit', $episode->id) }}"
-                                        class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('admin.permissions.add', $permission->id) }}" class="btn btn-primary">Add Role</a>
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.episodes.delete', $episode->id) }}" method="POST">
+                                    <a href="{{ route('admin.permissions.edit', $permission->id) }}" class="btn btn-primary">Edit</a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.permissions.delete', $permission->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
@@ -80,5 +71,4 @@
             </ul>
         </div>
     </div>
-    @endcan
 @endsection

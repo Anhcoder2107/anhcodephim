@@ -16,6 +16,8 @@ use App\Http\Controllers\admin\ActorsController;
 use App\Http\Controllers\admin\DirectorsController;
 use App\Http\Controllers\admin\RegionsController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\RoleController;
+use App\Http\Controllers\admin\PermissionController;
 
 
 /*
@@ -69,7 +71,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
 
 
     //episodes admin
-    Route::get('episodes', [EpisodesController::class, 'index'])->name('espiodes');
+    Route::group(['middleware' => ['can:Browse episode']], function(){
+        Route::get('episodes', [EpisodesController::class, 'index'])->name('espiodes');
+    });
     Route::get('episodes/{id}', [EpisodesController::class, 'episodeByMovie'])->name('episodes.movie_id');
     Route::get('episodes/create/{id}', [EpisodesController::class, 'create'])->name('episodes.create');
     Route::post('episodes/store/{id}', [EpisodesController::class, 'store'])->name('episodes.store');
@@ -91,10 +95,18 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::post('categories/delete/{id}/{movie_id}', [AdminCategoriesController::class, 'deleteCategory'])->name('categories.delete.post');
 
     //users admin
-    Route::get('users', [UsersController::class, 'users'])->name('users');
+    Route::get('users', [UsersController::class, 'index'])->name('users');
+    Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
+    Route::post('users/store', [UsersController::class, 'store'])->name('users.store');
     Route::get('users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
     Route::post('users/update/{id}', [UsersController::class, 'update'])->name('users.update');
     Route::post('users/delete/{id}', [UsersController::class, 'delete'])->name('users.delete');
+
+    Route::get('users/addRole/{id}', [UsersController::class, 'addGet'])->name('users.add');
+    Route::post('users/addRole/{id}', [UsersController::class, 'addPost'])->name('users.add.post');
+    Route::get('users/permissions/{id}', [UsersController::class, 'addPermissions'])->name('users.permissions');
+    Route::post('users/permissions/{id}', [UsersController::class, 'addPermissionsPost'])->name('users.permissions.post');
+    Route::get('users/show/permissions/{id}', [UsersController::class, 'showPermissions'])->name('users.show.permissions');
 
     //directors admin
     Route::get('directors', [DirectorsController::class, 'index'])->name('directors');
@@ -138,20 +150,27 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::post('regions/delete/{id}/{movie_id}', [RegionsController::class, 'deleteRegion'])->name('regions.delete.post');
 
     //permissions admin
-    Route::get('permissions', [AdminMoviesController::class, 'index'])->name('permissions');
-    Route::get('permissions/create', [AdminMoviesController::class, 'create'])->name('permissions.create');
-    Route::post('permissions/store', [AdminMoviesController::class, 'store'])->name('permissions.store');
-    Route::get('permissions/edit/{id}', [AdminMoviesController::class, 'edit'])->name('permissions.edit');
-    Route::post('permissions/update/{id}', [AdminMoviesController::class, 'update'])->name('permissions.update');
-    Route::post('permissions/delete/{id}', [AdminMoviesController::class, 'delete'])->name('permissions.delete');
+    Route::get('permissions', [PermissionController::class, 'index'])->name('permissions');
+    Route::get('permissions/create', [PermissionController::class, 'create'])->name('permissions.create');
+    Route::post('permissions/store', [PermissionController::class, 'store'])->name('permissions.store');
+    Route::get('permissions/edit/{id}', [PermissionController::class, 'edit'])->name('permissions.edit');
+    Route::post('permissions/update/{id}', [PermissionController::class, 'update'])->name('permissions.update');
+    Route::post('permissions/delete/{id}', [PermissionController::class, 'delete'])->name('permissions.delete');
+
+    Route::get('permissions/addRole/{id}', [PermissionController::class, 'addGet'])->name('permissions.add');
+    Route::post('permissions/addRole/{id}', [PermissionController::class, 'addPost'])->name('permissions.add.post');
 
     //roles admin
-    Route::get('roles', [AdminMoviesController::class, 'index'])->name('roles');
-    Route::get('roles/create', [AdminMoviesController::class, 'create'])->name('roles.create');
-    Route::post('roles/store', [AdminMoviesController::class, 'store'])->name('roles.store');
-    Route::get('roles/edit/{id}', [AdminMoviesController::class, 'edit'])->name('roles.edit');
-    Route::post('roles/update/{id}', [AdminMoviesController::class, 'update'])->name('roles.update');
-    Route::post('roles/delete/{id}', [AdminMoviesController::class, 'delete'])->name('roles.delete');
+    Route::get('roles', [RoleController::class, 'index'])->name('roles');
+    Route::get('roles/create', [RoleController::class, 'create'])->name('roles.create');
+    Route::post('roles/store', [RoleController::class, 'store'])->name('roles.store');
+    Route::get('roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::post('roles/update/{id}', [RoleController::class, 'update'])->name('roles.update');
+    Route::post('roles/delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
+
+    Route::get('roles/addPermission/{id}', [RoleController::class, 'addGet'])->name('roles.add');
+    Route::post('roles/addPermission/{id}', [RoleController::class, 'addPost'])->name('roles.add.post');
+
 });
 
 

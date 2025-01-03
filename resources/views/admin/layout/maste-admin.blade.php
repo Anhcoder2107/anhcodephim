@@ -66,7 +66,8 @@
                     <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>SIDE PANEL</b></li>
                     <li class="list-group-item"><input type="text" class="form-control search-query"
                             placeholder="Search Something"></li>
-                    <li class="list-group-item"><a href="{{ route('admin.home') }}"><i class="glyphicon glyphicon-home"></i>Dashboard
+                    <li class="list-group-item"><a href="{{ route('admin.home') }}"><i
+                                class="glyphicon glyphicon-home"></i>Dashboard
                         </a></li>
                     <li>
                         <a href="#demo4" class="list-group-item " data-toggle="collapse">Movie<span
@@ -115,6 +116,33 @@
                     <li class="collapse" id="demo6">
                         <a href="{{ route('admin.espiodes') }}" class="list-group-item">Danh Sách Tập Phim</a>
                     </li>
+
+                    <li>
+                        <a href="#demo7" class="list-group-item " data-toggle="collapse">Users<span
+                                class="glyphicon glyphicon-chevron-right"></span></a>
+                    </li>
+                    <li class="collapse" id="demo7">
+                        <a href="{{ route('admin.users') }}" class="list-group-item">Danh Sách Người Dùng</a>
+                        <a href="{{ route('admin.users.create') }}" class="list-group-item">Thêm Mới Người Dùng</a>
+                    </li>
+                    <li>
+                        <a href="#demo8" class="list-group-item " data-toggle="collapse">Roles<span
+                                class="glyphicon glyphicon-chevron-right"></span></a>
+                    </li>
+                    <li class="collapse" id="demo8">
+                        <a href="{{ route('admin.roles') }}" class="list-group-item">Danh Sách Vai Trò</a>
+                        <a href="{{ route('admin.roles.create') }}" class="list-group-item">Thêm Mới Vai Trò</a>
+                    </li>
+                    <li>
+                        <a href="#demo9" class="list-group-item " data-toggle="collapse">Permissions<span
+                                class="glyphicon glyphicon-chevron-right"></span></a>
+                    </li>
+                    <li class="collapse" id="demo9">
+                        <a href="{{ route('admin.permissions') }}" class="list-group-item">Danh Sách Quyền</a>
+                        <a href="{{ route('admin.permissions.create') }}" class="list-group-item">Thêm Mới Quyền</a>
+
+                    </li>
+
 
                 </ul>
             </div>
