@@ -3,6 +3,7 @@
     Assign Roles to Permission
 @endsection
 @section('container')
+    @can('Role Has Permission', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -49,4 +50,11 @@
             </div>
         </div>
     </div>
+
+    @endcan
+    @cannot('Role Has Permission', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to assign roles to permission.
+        </div>
+    @endcannot
 @endsection

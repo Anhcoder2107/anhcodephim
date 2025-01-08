@@ -3,7 +3,7 @@
     Directors Admin
 @endsection
 @section('container')
-
+    @can('Browse director', Auth::user())
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
             <h1 id="tables" class="page-header">Directors
@@ -69,4 +69,10 @@
             </ul>
         </div>
     </div>
+    @endcan
+    @cannot('Browse director', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to add director.
+        </div>
+    @endcannot
 @endsection

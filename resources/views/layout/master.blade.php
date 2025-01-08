@@ -57,7 +57,13 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li><a href="#">Liên hệ</a></li>
+                                <li><a href="#">Khu Vực <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        @foreach ($regions as $region)
+                                            <li><a href="{{ route('movies.region.show', $region->slug) }}">{{ $region->name }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -122,7 +128,7 @@
                         <script>
                             document.write(new Date().getFullYear());
                         </script> All rights reserved | This template is made with <i class="fa fa-heart"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            aria-hidden="true"></i> by <a href="{{ route('home') }}" target="_blank">AnhcodePhim</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
 
@@ -136,8 +142,8 @@
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
+            <form class="search-model-form" action="{{ route('movies.search') }}" method="GET">
+                <input type="text" name="search" id="search-input" placeholder="Search here.....">
             </form>
         </div>
     </div>

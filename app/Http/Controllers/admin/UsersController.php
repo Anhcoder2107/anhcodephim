@@ -13,6 +13,7 @@ use Spatie\Permission\Models\Permission;
 
 class UsersController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -72,7 +73,7 @@ class UsersController extends Controller
     $request->validate([
         'name' => 'required',
         'email' => 'required|email',
-        'password' => 'nullable|confirmed|min=6',
+        'password' => 'nullable|min:6',
     ]);
 
     $user = User::find($id);

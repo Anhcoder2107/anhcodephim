@@ -3,6 +3,7 @@
     User Admin
 @endsection
 @section('container')
+    @can('Browse user', Auth::user())
 
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
@@ -86,4 +87,10 @@
             </ul>
         </div>
     </div>
+    @endcan
+    @cannot('Browse user', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to browse user.
+        </div>
+    @endcannot
 @endsection

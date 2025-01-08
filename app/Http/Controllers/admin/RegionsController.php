@@ -9,6 +9,7 @@ use App\Models\RegionMovie;
 
 class RegionsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */

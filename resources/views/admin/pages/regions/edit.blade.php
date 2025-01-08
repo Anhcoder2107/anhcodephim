@@ -1,8 +1,9 @@
 @extends('admin.layout.maste-admin')
 @section('title')
-    Create Regions Admin
+    Edit Regions Admin
 @endsection
 @section('container')
+    @can('Update region', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -53,6 +54,11 @@
                 </form>
             </div>
         </div>
-
     </div>
+    @endcan
+    @cannot('Update region', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to update region.
+        </div>
+    @endcannot
 @endsection

@@ -3,6 +3,7 @@
     Create Movies Admin
 @endsection
 @section('container')
+    @can('Update episode', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -86,4 +87,10 @@
         </div>
 
     </div>
+    @endcan
+    @cannot('Update episode', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to create episode.
+        </div>
+    @endcannot
 @endsection

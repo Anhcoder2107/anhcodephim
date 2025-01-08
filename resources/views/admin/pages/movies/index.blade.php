@@ -3,7 +3,7 @@
     Movies Admin
 @endsection
 @section('container')
-
+    @can('Browse movie', Auth::user())
     <div class="content-row">
         <div class="col-md-12">
             <h1 id="tables" class="page-header">Movies</h1>
@@ -123,4 +123,10 @@
             </ul>
         </div>
     </div>
+    @endcan
+    @cannot('Browse movie', Auth::user())
+    <div class="alert alert-danger" role="alert">
+        You don't have permission to access this page.
+    </div>
+    @endcannot
 @endsection

@@ -9,11 +9,12 @@ use App\Models\Episodes;
 
 class MoviesController extends Controller
 {
-    //
-
-
     public function show($slug){
         $movie = Movies::where('slug', $slug)->first();
+        $movieId = $movie->id;
+
+        $this->incrementMovieViews($movieId);
+
         $categories = Categories::all();
         $movie_categories = CategoryMovie::where('movie_id', $movie->id)->get();
         $movie_categories = $movie_categories->map(function($movie_category) use ($categories){
@@ -37,5 +38,11 @@ class MoviesController extends Controller
         $episodes = $episodes->where('type', 'embed');
         $episode_first = $episodes->where('type', 'embed')->first();
         return view('anime-watching', compact('movie', 'episodes', 'episode_first'));
+    }
+
+    public function search(Request $request){
+        $search = $request->search;
+        $movies = Movies::where('name', 'like', '%'.$search.'%')->paginate(12);
+        return view('search', compact('movies', 'search'));
     }
 }

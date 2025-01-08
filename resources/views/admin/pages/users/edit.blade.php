@@ -3,6 +3,7 @@
     Edit User
 @endsection
 @section('container')
+    @can('Update user', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -58,4 +59,10 @@
             </div>
         </div>
     </div>
+    @endcan
+    @cannot('Update user', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to update user.
+        </div>
+    @endcannot
 @endsection

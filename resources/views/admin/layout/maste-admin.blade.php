@@ -41,7 +41,7 @@
             <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Admin <b
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ Auth::user()->name }} <b
                                 class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
                             <li class="dropdown-header">Setting</li>
@@ -68,7 +68,8 @@
                             placeholder="Search Something"></li>
                     <li class="list-group-item"><a href="{{ route('admin.home') }}"><i
                                 class="glyphicon glyphicon-home"></i>Dashboard
-                        </a></li>
+                        </a>
+                    </li>
                     <li>
                         <a href="#demo4" class="list-group-item " data-toggle="collapse">Movie<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
@@ -116,7 +117,7 @@
                     <li class="collapse" id="demo6">
                         <a href="{{ route('admin.espiodes') }}" class="list-group-item">Danh Sách Tập Phim</a>
                     </li>
-
+                    @role('Admin')
                     <li>
                         <a href="#demo7" class="list-group-item " data-toggle="collapse">Users<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
@@ -142,7 +143,7 @@
                         <a href="{{ route('admin.permissions.create') }}" class="list-group-item">Thêm Mới Quyền</a>
 
                     </li>
-
+                    @endrole
 
                 </ul>
             </div>

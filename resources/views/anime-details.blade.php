@@ -39,15 +39,20 @@ Thông Tin Phim | {{$movie->name}}
                             </div>
                             <div class="anime__details__rating">
                                 <div class="rating">
+                                    {{-- <a href="#"><i class="fa fa-star"></i></a>
                                     <a href="#"><i class="fa fa-star"></i></a>
                                     <a href="#"><i class="fa fa-star"></i></a>
                                     <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star-half-o"></i></a>
+                                    <a href="#"><i class="fa fa-star-half-o"></i></a> --}}
+                                    <a href=""><i class="fa fa-star-o"></i></a>
+                                    <a href=""><i class="fa fa-star-o"></i></a>
+                                    <a href=""><i class="fa fa-star-o"></i></a>
+                                    <a href=""><i class="fa fa-star-o"></i></a>
+                                    <a href=""><i class="fa fa-star-o"></i></a>
                                 </div>
-                                <span>1.029 Votes</span>
+                                <span>0 Votes</span>
                             </div>
-                            <p><p>
+                            <p>{!! $movie->content !!}<p>
                             <div class="anime__details__widget">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
@@ -65,8 +70,8 @@ Thông Tin Phim | {{$movie->name}}
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>Scores:</span> 7.31 / 1,515</li>
-                                            <li><span>Rating:</span> 8.5 / 161 times</li>
+                                            <li><span>Scores:</span> 0/0</li>
+                                            <li><span>Rating:</span> {{ $movie->rating_count }}</li>
                                             <li><span>Duration:</span> {{ $movie->episode_time }}</li>
                                             <li><span>Quality:</span> {{ $movie->quality }}</li>
                                             <li><span>Views:</span> {{ $movie->view_total }}</li>
@@ -82,7 +87,11 @@ Thông Tin Phim | {{$movie->name}}
                         </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+
+
+                {{-- <div class="row">
                     <div class="col-lg-8 col-md-8">
                         <div class="anime__details__review">
                             <div class="section-title">
@@ -90,7 +99,7 @@ Thông Tin Phim | {{$movie->name}}
                             </div>
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-1.jpg" alt="">
+                                    <img src="{{ asset('img/anime/review-1.jpg') }}" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
                                     <h6>Chris Curry - <span>1 Hour ago</span></h6>
@@ -100,7 +109,7 @@ Thông Tin Phim | {{$movie->name}}
                             </div>
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-2.jpg" alt="">
+                                    <img src="{{ asset('img/anime/review-1.jpg') }}" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
                                     <h6>Lewis Mann - <span>5 Hour ago</span></h6>
@@ -109,7 +118,7 @@ Thông Tin Phim | {{$movie->name}}
                             </div>
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-3.jpg" alt="">
+                                    <img src="{{ asset('img/anime/review-2.jpg') }}" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
                                     <h6>Louis Tyler - <span>20 Hour ago</span></h6>
@@ -118,30 +127,12 @@ Thông Tin Phim | {{$movie->name}}
                             </div>
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-4.jpg" alt="">
+                                    <img src="{{ asset('img/anime/review-3.jpg') }}" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
                                     <h6>Chris Curry - <span>1 Hour ago</span></h6>
                                     <p>whachikan Just noticed that someone categorized this as belonging to the genre
                                     "demons" LOL</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-5.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-6.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +173,7 @@ Thông Tin Phim | {{$movie->name}}
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
         <!-- Anime Section End -->

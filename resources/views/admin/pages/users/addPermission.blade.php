@@ -3,6 +3,7 @@
     Assign Permissions to User
 @endsection
 @section('container')
+    @can('Model Has Permission', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -49,4 +50,10 @@
             </div>
         </div>
     </div>
+    @endcan
+    @cannot('Model Has Permission', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to assign permissions to user.
+        </div>
+    @endcannot
 @endsection

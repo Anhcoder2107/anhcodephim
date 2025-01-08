@@ -9,6 +9,7 @@ use App\Models\Directors;
 
 class DirectorsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */

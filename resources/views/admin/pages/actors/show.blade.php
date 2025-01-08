@@ -3,6 +3,7 @@
     Actor Admin
 @endsection
 @section('container')
+    @can('Movie Has Actor', auth()->user())
 
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
@@ -62,4 +63,10 @@
             </ul>
         </div>
     </div>
+    @endcan
+    @cannot('Movie Has Actor', auth()->user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to add actor to movie.
+        </div>
+    @endcannot
 @endsection

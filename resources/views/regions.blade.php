@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-Thể Loại | {{$category->name}}
+Khu Vực | {{$region->name}}
 @endsection
 @section('container')
     <!-- Breadcrumb Begin -->
@@ -10,8 +10,8 @@ Thể Loại | {{$category->name}}
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="{{ route('home') }}"><i class="fa fa-home"></i> Trang chủ</a>
-                        <a href="{{ route('movies.category') }}">Thể loại</a>
-                        <span>{{ $category->name }}</span>
+                        <a href="{{ route('movies.region.show', $region->slug) }}">Khu Vực</a>
+                        <span>{{ $region->name }}</span>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@ Thể Loại | {{$category->name}}
                             <div class="row">
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
-                                        <h4>{{ $category->name }}</h4>
+                                        <h4>{{ $region->name }}</h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6">

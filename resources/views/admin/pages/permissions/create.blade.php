@@ -3,6 +3,7 @@
     Create Permission Admin
 @endsection
 @section('container')
+    @can('Create permission', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -46,4 +47,10 @@
         </div>
 
     </div>
+    @endcan
+    @cannot('Create permission', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to create permission.
+        </div>
+    @endcannot
 @endsection

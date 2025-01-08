@@ -9,7 +9,6 @@ use App\Models\Movies;
 
 class AdminMoviesController extends Controller
 {
-    //
 
 
     public function index(){

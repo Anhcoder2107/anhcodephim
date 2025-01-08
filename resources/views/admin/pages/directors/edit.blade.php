@@ -3,6 +3,7 @@
     Edit Directors Admin
 @endsection
 @section('container')
+    @can('Update director', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -55,4 +56,10 @@
         </div>
 
     </div>
+    @endcan
+    @cannot('Update director', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to edit director.
+        </div>
+    @endcannot
 @endsection

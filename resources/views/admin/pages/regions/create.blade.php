@@ -3,6 +3,7 @@
     Create Regions Admin
 @endsection
 @section('container')
+    @can('Create region', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -53,4 +54,10 @@
         </div>
 
     </div>
+    @endcan
+    @cannot('Create region', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to create region.
+        </div>
+    @endcannot
 @endsection

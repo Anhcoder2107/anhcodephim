@@ -35,9 +35,19 @@ class HomeController extends Controller
 
         $trendMovies = $movies->random(12);
 
+        $topViewMovies = $movies->sortByDesc('views')->take(12);
+
+        $sliderMovies = $movies->random(5);
 
 
 
-        return view('index', compact('movies', 'seriesMovies', 'singleMovies', 'trendMovies'));
+
+        return view('index', compact('movies', 'seriesMovies', 'singleMovies', 'trendMovies', 'topViewMovies', 'sliderMovies'));
     }
+
+
+
+
+
+
 }

@@ -3,7 +3,7 @@
     Role Admin
 @endsection
 @section('container')
-
+@can('Browse role', Auth::user())
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
             <h1 id="tables" class="page-header">Role
@@ -71,4 +71,10 @@
             </ul>
         </div>
     </div>
+    @endcan
+    @cannot('Browse role', Auth::user())
+    <div class="alert alert-danger">
+        <strong>Sorry!</strong> You don't have permission to browse role.
+    </div>
+    @endcannot
 @endsection

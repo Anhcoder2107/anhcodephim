@@ -21,6 +21,10 @@ class CategoriesController extends Controller
         $movies = $movies->map(function($movie){
             return Movies::where('id', $movie->movie_id)->first();
         });
-        return view('categories', compact('category', 'movies'));
+
+        $topViewMovies = $movies->sortByDesc('views')->take(12);
+
+
+        return view('categories', compact('category', 'movies', 'topViewMovies'));
     }
 }

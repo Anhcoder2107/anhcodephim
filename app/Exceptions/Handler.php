@@ -27,4 +27,16 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+{
+    if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+        return response()->json([
+            'responseMessage' => 'Ban dell co quyen vao day',
+            'responseStatus'  => 403,
+        ]);
+    }
+
+    return parent::render($request, $exception);
+}
 }

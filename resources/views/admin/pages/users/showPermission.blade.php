@@ -3,6 +3,7 @@
     User Permissions
 @endsection
 @section('container')
+    @can('Model Has Permission', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -33,4 +34,5 @@
             </div>
         </div>
     </div>
+    @endcan
 @endsection

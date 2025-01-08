@@ -3,6 +3,7 @@
     Edit Role Admin
 @endsection
 @section('container')
+    @can('Update role', Auth::user())
     <div class="content-row">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -46,4 +47,10 @@
         </div>
 
     </div>
+    @endcan
+    @cannot('Update role', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to update role.
+        </div>
+    @endcannot
 @endsection

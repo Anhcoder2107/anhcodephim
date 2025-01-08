@@ -10,6 +10,7 @@ use App\Models\Movies;
 class EpisodesController extends Controller
 {
 
+
     public function index(){
         $episodes = Episodes::paginate(10);
         $total_pages = $episodes->lastPage();

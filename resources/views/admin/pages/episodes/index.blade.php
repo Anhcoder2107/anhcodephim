@@ -4,8 +4,6 @@
 @endsection
 @section('container')
     @can('Browse episode', Auth::user())
-
-
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
             <h1 id="tables" class="page-header">
@@ -81,4 +79,9 @@
         </div>
     </div>
     @endcan
+    @cannot('Browse episode', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to browse episodes.
+        </div>
+    @endcannot
 @endsection

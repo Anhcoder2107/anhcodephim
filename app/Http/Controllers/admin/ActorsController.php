@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Actors;
 use App\Models\ActorMovie;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
 
 class ActorsController extends Controller
 {
-    //
+
+
     function index(){
         $actors = Actors::paginate(10);
         $current_page = $actors->currentPage();

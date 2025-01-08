@@ -3,6 +3,7 @@
     Edit Movies | $movie->name
 @endsection
 @section('container')
+    @can('Update movie', Auth::user())
     <div class="content-row">
 
         <div class="panel panel-default">
@@ -164,4 +165,10 @@
         </div>
 
     </div>
+    @endcan
+    @cannot('Update movie', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to update movie.
+        </div>
+    @endcannot
 @endsection

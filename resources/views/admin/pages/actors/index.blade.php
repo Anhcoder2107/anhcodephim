@@ -3,7 +3,7 @@
     Actors Admin
 @endsection
 @section('container')
-
+    @can('Browse actor', Auth::user())
     <div class="content-row">
         <div class="col-md-12 tabbable tabs-right">
             <h1 id="tables" class="page-header">Actors
@@ -69,4 +69,10 @@
             </ul>
         </div>
     </div>
+    @endcan
+    @cannot('Browse actor', Auth::user())
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> You don't have permission to browse actor.
+        </div>
+    @endcannot
 @endsection
