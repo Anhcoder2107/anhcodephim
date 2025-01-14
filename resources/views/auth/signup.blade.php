@@ -23,6 +23,15 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Sign Up</h3>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="#" method="POST">
                             @csrf
                             <div class="input__item">
@@ -39,7 +48,7 @@
                             </div>
                             <button type="submit" class="site-btn">Login Now</button>
                         </form>
-                        <h5>Already have an account? <a href="{{route('login')}}">Log In!</a></h5>
+                        <h5>Already have an account? <a href="{{ route('login') }}">Log In!</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -49,7 +58,8 @@
                             <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
                             </li>
                             <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a></li>
+                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

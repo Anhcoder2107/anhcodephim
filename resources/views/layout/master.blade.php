@@ -84,7 +84,10 @@
                                 </li>
                             @else
                                 <li>
-                                    <a href="#">{{Auth::user()->name}}<span class="icon_profile"></span></a>
+                                    <a href="#">{{Auth::user()->name}}<span class="icon_profile arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        <li><a href="{{ route('logout')}}">Logout</a></li>
+                                    </ul>
                                 </li>
                             @endif
                         </ul>
@@ -115,10 +118,7 @@
                 <div class="col-lg-6">
                     <div class="footer__nav">
                         <ul>
-                            <li class="active"><a href="./index.html">Homepage</a></li>
-                            <li><a href="./categories.html">Categories</a></li>
-                            <li><a href="./blog.html">Our Blog</a></li>
-                            <li><a href="#">Contacts</a></li>
+                            <li class="active"><a href="{{ route('home') }}">Homepage</a></li>
                         </ul>
                     </div>
                 </div>

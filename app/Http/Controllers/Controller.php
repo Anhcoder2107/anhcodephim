@@ -9,6 +9,7 @@ use App\Models\Categories;
 use App\Models\Regions;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 use Illuminate\Support\Carbon;
 use App\Models\Movies;

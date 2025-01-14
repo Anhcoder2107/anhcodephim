@@ -19,7 +19,8 @@ use App\Http\Controllers\admin\RegionsController as AdminRegionsController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\PermissionController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,10 +45,20 @@ Route::post('/register', [AuthController::class, 'store'])->name('register');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //login with facebook
-Route::get('/facebook', [AuthController::class, 'login'])->name('facebook');
-Route::get('/facebook/callback', [AuthController::class, 'login'])->name('facebook.callback');
+Route::get('auth/facebook', [AuthController::class, 'loginWithFacebook'])->name('facebook');
+Route::get('auth/facebook/callback', [AuthController::class, 'loginWithFacebookCallback'])->name('facebook.callback');
+
+//login with google
+Route::get('auth/google', [AuthController::class, 'loginWithGoogle'])->name('google');
+Route::get('auth/google/callback', [AuthController::class, 'loginWithGoogleCallback'])->name('google.callback');
 
 
+
+Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 
 //movies routes
