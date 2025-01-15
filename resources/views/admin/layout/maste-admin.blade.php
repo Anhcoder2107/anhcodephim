@@ -44,12 +44,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ Auth::user()->name }} <b
                                 class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
-                            <li class="dropdown-header">Setting</li>
-                            <li><a href="#">Action</a></li>
-                            <li class="divider"></li>
-                            <li class="active"><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li class="disabled"><a href="#">Signout</a></li>
+                            <li class="disabled"><a href="{{ route('admin.logout') }}">Logout</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -30,9 +30,18 @@
 
 <body>
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form class="form-signin" role="form" method="POST" action="{{ route('admin.login') }}">
             @csrf
-            <h3 class="form-signin-heading">Please sign in</h3>
+            <h3 class="form-signin-heading">Please Log in</h3>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">
@@ -53,21 +62,18 @@
                 </div>
             </div>
 
-            <label class="checkbox">
-                <input type="checkbox" value="remember-me"> &nbsp Remember me
-            </label>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </form>
 
     </div>
     <div class="clearfix"></div>
     <br><br>
     <!--footer-->
-    <div class="site-footer login-footer">
+    {{-- <div class="site-footer login-footer">
         <div class="container">
             <div class="copyright clearfix text-center">
                 <p><b>AnhcodePhim</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="getting-started.html">Getting
-                        Started</a>&nbsp;&bull;&nbsp;<a href="index.html">Documentation</a>&nbsp;&bull;&nbsp;<a
+                        Started</a>&nbsp;&bull;&nbsp;<a href="#">Documentation</a>&nbsp;&bull;&nbsp;<a
                         href="https://github.com/Bootflat/Bootflat.UI.Kit.PSD/archive/master.zip">Free
                         PSD</a>&nbsp;&bull;&nbsp;<a href="colors.html">Color Picker</a></p>
                 <p>Code licensed under <a href="http://opensource.org/licenses/mit-license.html" target="_blank"
@@ -75,7 +81,7 @@
                         href="http://creativecommons.org/licenses/by/3.0/" rel="external nofollow">CC BY 3.0</a>.</p>
             </div>
         </div>
-    </div>
+    </div> --}}
 </body>
 
 </html>

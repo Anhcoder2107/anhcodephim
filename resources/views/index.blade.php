@@ -54,11 +54,13 @@
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
                                         <a href="{{ route('movies.show', $trendMovie->slug) }}">
-                                            <div class="product__item__pic set-bg"
+                                            <div class="product__item__pic set-bg lazy"
                                                 data-setbg="{{ $trendMovie->thumb_url }}">
                                                 <div class="ep">{{ $trendMovie->episode_current }} /
                                                     {{ $trendMovie->episode_total }}</div>
-                                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                                <div class="view"><i class="fa fa-eye"></i>
+                                                    {{ $trendMovie->view_total }}
+                                                </div>
                                             </div>
                                         </a>
                                         <div class="product__item__text">
@@ -92,12 +94,14 @@
                             @foreach ($seriesMovies as $seriesMovie)
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="{{ $seriesMovie->thumb_url }}">
+                                        <div class="product__item__pic set-bg lazy" data-setbg="{{ $seriesMovie->thumb_url }}">
                                             <div class="ep">
                                                 {{ $seriesMovie->episode_current }}/ {{ $seriesMovie->episode_total }}
                                             </div>
-                                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                            <div class="comment"><i class="fa fa-comments"></i> 0</div>
+                                            <div class="view"><i class="fa fa-eye"></i>
+                                                {{ $seriesMovie->view_total }}
+                                            </div>
                                         </div>
                                         <div class="product__item__text">
                                             <ul>
@@ -130,11 +134,13 @@
                             @foreach ($singleMovies as $singleMovie)
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="{{ $singleMovie->thumb_url }}">
+                                        <div class="product__item__pic set-bg lazy" data-setbg="{{ $singleMovie->thumb_url }}">
                                             <div class="ep">{{ $singleMovie->episode_current }} /
                                                 {{ $singleMovie->episode_total }}</div>
-                                            <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                            <div class="comment"><i class="fa fa-comments"></i> 0</div>
+                                            <div class="view"><i class="fa fa-eye"></i>
+                                                {{ $singleMovie->view_total }}
+                                            </div>
                                         </div>
                                         <div class="product__item__text">
                                             <ul>
@@ -165,7 +171,7 @@
                             </ul>
                             <div class="filter__gallery">
                                 @foreach ($topViewMovies as $topViewMovie)
-                                    <div class="product__sidebar__view__item set-bg mix day"
+                                    <div class="product__sidebar__view__item set-bg lazy mix day"
                                         data-setbg="{{ $topViewMovie->thumb_url }}">
                                         <div class="ep">{{ $topViewMovie->episode_current }} /
                                             {{ $topViewMovie->episode_total }}</div>

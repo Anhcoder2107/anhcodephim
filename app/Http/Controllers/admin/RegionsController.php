@@ -15,11 +15,22 @@ class RegionsController extends Controller
      */
     public function index()
     {
-        $regions = Regions::paginate(10);
-        $current_page = $regions->currentPage();
+        // $regions = Regions::paginate(10);
+        // $current_page = $regions->currentPage();
+        // $total_pages = $regions->lastPage();
+        // $path = $regions->path();
+        // return view('admin.pages.regions.index', compact('regions', 'current_page', 'total_pages', 'path'));
+
+        $regions = Regions::when(request('search'), function($query){
+            return $query->where('name', 'like', '%'.request('search').'%');
+        })->paginate(10);
+
         $total_pages = $regions->lastPage();
+        $current_page = $regions->currentPage();
         $path = $regions->path();
-        return view('admin.pages.regions.index', compact('regions', 'current_page', 'total_pages', 'path'));
+
+        return view('admin.pages.regions.index', compact('regions', 'total_pages', 'current_page', 'path'));
+
     }
 
     /**

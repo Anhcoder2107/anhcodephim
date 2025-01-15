@@ -15,11 +15,22 @@ class DirectorsController extends Controller
      */
     public function index()
     {
-        $directors = Directors::paginate(10);
-        $current_page = $directors->currentPage();
+        // $directors = Directors::paginate(10);
+        // $current_page = $directors->currentPage();
+        // $total_pages = $directors->lastPage();
+        // $path = $directors->path();
+        // return view('admin.pages.directors.index', compact('directors', 'current_page', 'total_pages', 'path'));
+
+        $directors = Directors::when(request('search'), function($query){
+            return $query->where('name', 'like', '%'.request('search').'%');
+        })->paginate(10);
+
         $total_pages = $directors->lastPage();
+        $current_page = $directors->currentPage();
         $path = $directors->path();
-        return view('admin.pages.directors.index', compact('directors', 'current_page', 'total_pages', 'path'));
+
+        return view('admin.pages.directors.index', compact('directors', 'total_pages', 'current_page', 'path'));
+
     }
 
     /**

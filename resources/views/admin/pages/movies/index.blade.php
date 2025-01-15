@@ -7,6 +7,20 @@
     <div class="content-row">
         <div class="col-md-12">
             <h1 id="tables" class="page-header">Movies</h1>
+            {{-- them nut sreach --}}
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="{{ route('admin.movies.search') }}" method="POST">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>

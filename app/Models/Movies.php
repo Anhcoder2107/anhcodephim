@@ -34,7 +34,7 @@ class Movies extends Model
 
     //foreign key with episodes
     public function episodes(){
-        return $this->hasMany(Episodes::class);
+        return $this->hasMany(Episodes::class, 'movie_id');
     }
 
     //foreign key with actor_movie

@@ -93,6 +93,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     //movies admin
     Route::group(['middleware' => ['permission:Browse movie']], function () {
         Route::get('/movies', [AdminMoviesController::class, 'index'])->name('movies');
+        Route::post('/movies', [AdminMoviesController::class, 'index'])->name('movies.search');
     });
     Route::group(['middleware' => ['permission:Create movie']], function () {
         Route::get('/movies/create', [AdminMoviesController::class, 'create'])->name('movies.create');
@@ -126,6 +127,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     //categories admin
     Route::group(['middleware' => ['permission:Browse category']], function () {
         Route::get('categories', [AdminCategoriesController::class, 'index'])->name('categories');
+        Route::post('categories', [AdminCategoriesController::class, 'index'])->name('categories.search');
     });
     Route::group(['middleware' => ['permission:Create category']], function () {
         Route::get('categories/create', [AdminCategoriesController::class, 'create'])->name('categories.create');
@@ -146,6 +148,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     //directors admin
     Route::group(['middleware' => ['permission:Browse director']], function () {
         Route::get('directors', [DirectorsController::class, 'index'])->name('directors');
+        Route::post('directors', [DirectorsController::class, 'index'])->name('directors.search');
     });
     Route::group(['middleware' => ['permission:Create director']], function () {
         Route::get('directors/create', [DirectorsController::class, 'create'])->name('directors.create');
@@ -168,6 +171,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     //actors admin
     Route::group(['middleware' => ['permission:Browse actor']], function () {
         Route::get('actors', [ActorsController::class, 'index'])->name('actors');
+        Route::post('actors', [ActorsController::class, 'index'])->name('actors.search');
     });
     Route::group(['middleware' => ['permission:Create actor']], function () {
         Route::get('actors/create', [ActorsController::class, 'create'])->name('actors.create');
@@ -190,6 +194,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     //regions admin
     Route::group(['middleware' => ['permission:Browse region']], function () {
         Route::get('regions', [AdminRegionsController::class, 'index'])->name('regions');
+        Route::post('regions', [AdminRegionsController::class, 'index'])->name('regions.search');
     });
     Route::group(['middleware' => ['permission:Create region']], function () {
         Route::get('regions/create', [AdminRegionsController::class, 'create'])->name('regions.create');

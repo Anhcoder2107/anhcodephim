@@ -14,11 +14,22 @@ class ActorsController extends Controller
 
 
     function index(){
-        $actors = Actors::paginate(10);
-        $current_page = $actors->currentPage();
+        // $actors = Actors::paginate(10);
+        // $current_page = $actors->currentPage();
+        // $total_pages = $actors->lastPage();
+        // $path = $actors->path();
+        // return view('admin.pages.actors.index', compact('actors', 'current_page', 'total_pages', 'path'));
+
+        $actors = Actors::when(request('search'), function($query){
+            return $query->where('name', 'like', '%'.request('search').'%');
+        })->paginate(10);
+
         $total_pages = $actors->lastPage();
+        $current_page = $actors->currentPage();
         $path = $actors->path();
-        return view('admin.pages.actors.index', compact('actors', 'current_page', 'total_pages', 'path'));
+
+        return view('admin.pages.actors.index', compact('actors', 'total_pages', 'current_page', 'path'));
+
     }
 
     function create(){

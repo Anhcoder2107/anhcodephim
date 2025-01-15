@@ -15,11 +15,22 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Categories::paginate(10);
-        $current_page = $categories->currentPage();
+        // $categories = Categories::paginate(10);
+        // $current_page = $categories->currentPage();
+        // $total_pages = $categories->lastPage();
+        // $path = $categories->path();
+        // return view('admin.pages.categories.index', compact('categories', 'current_page', 'total_pages', 'path'));
+
+        $categories = Categories::when(request('search'), function($query){
+            return $query->where('name', 'like', '%'.request('search').'%');
+        })->paginate(10);
+
         $total_pages = $categories->lastPage();
+        $current_page = $categories->currentPage();
         $path = $categories->path();
-        return view('admin.pages.categories.index', compact('categories', 'current_page', 'total_pages', 'path'));
+
+        return view('admin.pages.categories.index', compact('categories', 'total_pages', 'current_page', 'path'));
+
     }
 
     /**
