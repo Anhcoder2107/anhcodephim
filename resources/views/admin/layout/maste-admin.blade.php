@@ -65,46 +65,90 @@
                                 class="glyphicon glyphicon-home"></i>Dashboard
                         </a>
                     </li>
+                    @if (Auth::user()->can('Browse movie') || Auth::user()->can('Create movie'))
                     <li>
                         <a href="#demo4" class="list-group-item " data-toggle="collapse">Movie<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
                     </li>
+                    @endif
+
                     <li class="collapse" id="demo4">
+                        @can('Browse movie', Auth::user())
                         <a href="{{ route('admin.movies') }}" class="list-group-item">Danh Sách Phim</a>
+                        @endcan
+                        @can('Create movie', Auth::user())
                         <a href="{{ route('admin.movies.create') }}" class="list-group-item">Thêm Mới Phim</a>
+                        @endcan
                     </li>
+
+                    @if (Auth::user()->can('Browse category') || Auth::user()->can('Create category'))
                     <li>
                         <a href="#demo1" class="list-group-item " data-toggle="collapse">Category<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
                     </li>
+                    @endif
+
                     <li class="collapse" id="demo1">
+                        @can('Browse category', Auth::user())
                         <a href="{{ route('admin.categories') }}" class="list-group-item">Danh Sách Danh Mục</a>
+                        @endcan
+                        @can('Create category', Auth::user())
                         <a href="{{ route('admin.categories.create') }}" class="list-group-item">Thêm Mới Danh Mục</a>
+                        @endcan
                     </li>
+
+                    @if (Auth::user()->can('Browse actor') || Auth::user()->can('Create actor'))
                     <li>
                         <a href="#demo2" class="list-group-item " data-toggle="collapse">Actors<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
                     </li>
+                    @endif
+
                     <li class="collapse" id="demo2">
+                        @can('Browse actor', Auth::user())
                         <a href="{{ route('admin.actors') }}" class="list-group-item">Danh Sách Diễn Viên</a>
+                        @endcan
+                        @can('Create actor', Auth::user())
                         <a href="{{ route('admin.actors.create') }}" class="list-group-item">Thêm Mới Diễn Viên</a>
+                        @endcan
                     </li>
+
+                    @if(Auth::user()->can('Browse director') || Auth::user()->can('Create director'))
                     <li>
                         <a href="#demo3" class="list-group-item " data-toggle="collapse">Directors<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
                     </li>
+                    @endif
+
                     <li class="collapse" id="demo3">
+                        @can('Browse director', Auth::user())
                         <a href="{{ route('admin.directors') }}" class="list-group-item">Danh Sách Đạo Diễn</a>
+                        @endcan
+                        @can('Create director', Auth::user())
                         <a href="{{ route('admin.directors.create') }}" class="list-group-item">Thêm Mới Đạo Diễn</a>
+                        @endcan
                     </li>
+
+
+                    @if (Auth::user()->can('Browse region') || Auth::user()->can('Create region'))
                     <li>
                         <a href="#demo5" class="list-group-item " data-toggle="collapse">Regions<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
                     </li>
+                    @endif
+
+
                     <li class="collapse" id="demo5">
+                        @can('Browse region', Auth::user())
                         <a href="{{ route('admin.regions') }}" class="list-group-item">Danh Sách Khu Vực</a>
+                        @endcan
+                        @can('Create region', Auth::user())
                         <a href="{{ route('admin.regions.create') }}" class="list-group-item">Thêm Mới Khu Vực</a>
+                        @endcan
                     </li>
+
+
+                    @can('Browse episode', Auth::user())
                     <li>
                         <a href="#demo6" class="list-group-item " data-toggle="collapse">Episodes<span
                                 class="glyphicon glyphicon-chevron-right"></span></a>
@@ -112,6 +156,7 @@
                     <li class="collapse" id="demo6">
                         <a href="{{ route('admin.espiodes') }}" class="list-group-item">Danh Sách Tập Phim</a>
                     </li>
+                    @endcan
                     @role('Admin')
                     <li>
                         <a href="#demo7" class="list-group-item " data-toggle="collapse">Users<span

@@ -43,8 +43,16 @@ class UsersController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required',
+            'password' => 'required|min:8|regex:/^(?=.*[a-zA-Z])(?=.*\d).+$/',
+
         ]);
+
+        // check confirmation password
+        if ($request->password !== $request->password_confirmation) {
+            return back()->withErrors([
+                'password' => 'The password confirmation does not match.',
+            ]);
+        }
 
         User::create(
             [
@@ -73,8 +81,15 @@ class UsersController extends Controller
     $request->validate([
         'name' => 'required',
         'email' => 'required|email',
-        'password' => 'nullable|min:6',
+        'password' => 'nullable|min:8|regex:/^(?=.*[a-zA-Z])(?=.*\d).+$/',
     ]);
+
+    // check confirmation password
+    if ($request->password !== $request->password_confirmation) {
+        return back()->withErrors([
+            'password' => 'The password confirmation does not match.',
+        ]);
+    }
 
     $user = User::find($id);
     $user->name = $request->name;

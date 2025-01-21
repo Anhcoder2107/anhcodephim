@@ -46,7 +46,7 @@
                                 <input type="password" placeholder="Password" name="password">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
+                            <button type="submit" class="site-btn">Register Now</button>
                         </form>
                         <h5>Already have an account? <a href="{{ route('login') }}">Log In!</a></h5>
                     </div>
@@ -55,11 +55,10 @@
                     <div class="login__social__links">
                         <h3>Login With:</h3>
                         <ul>
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
+                            <li><a href="{{ route('facebook') }}" class="facebook"><i class="fa fa-facebook"></i> Sign in With Facebook</a>
                             </li>
-                            <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
-                            </li>
+                            <li><a href="{{ route('google') }}" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
+
                         </ul>
                     </div>
                 </div>

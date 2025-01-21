@@ -31,11 +31,15 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
 {
     if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
-        return response()->json([
-            'responseMessage' => 'Ban dell co quyen vao day',
-            'responseStatus'  => 403,
-        ]);
+        return response()->view('admin.pages.err.403', [], 403);
     }
+
+    // if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+    //     return response()->json([
+    //         'responseMessage' => 'Ban dell co quyen vao day',
+    //         'responseStatus'  => 403,
+    //     ]);
+    // }
 
     return parent::render($request, $exception);
 }

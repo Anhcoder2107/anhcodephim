@@ -12,7 +12,7 @@
                                 <div class="hero__text">
                                     <div class="label">
                                         @foreach ($sliderMovie->categories as $category)
-                                            <span>{{ $category->name }}</span>
+                                            <span>{{ $category->name }} - </span>
                                         @endforeach
                                     </div>
                                     <h2>{{ $sliderMovie->name }}</h2>

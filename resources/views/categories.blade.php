@@ -32,7 +32,7 @@ Thể Loại | {{$category->name}}
                                         <h4>{{ $category->name }}</h4>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                {{-- <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="product__page__filter">
                                         <p>Order by:</p>
                                         <select>
@@ -41,7 +41,7 @@ Thể Loại | {{$category->name}}
                                             <option value="">10-50</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="row">
@@ -51,7 +51,9 @@ Thể Loại | {{$category->name}}
                                     <div class="product__item__pic set-bg" data-setbg="{{ $movie->thumb_url }}">
                                         <div class="ep">{{ $movie->episode_current }} /
                                             {{ $movie->episode_total }}</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                        <div class="view"><i class="fa fa-eye"></i>
+                                            {{ $movie->view_total }}
+                                        </div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
